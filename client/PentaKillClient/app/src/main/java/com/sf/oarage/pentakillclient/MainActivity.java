@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sf.oarage.pentakillclient.network.Callback;
+import com.sf.oarage.pentakillclient.network.MainThreadCallback;
 import com.sf.oarage.pentakillclient.network.RestGetRequester;
 import com.sf.oarage.pentakillclient.network.RestRequester;
+
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,14 +24,15 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new RestGetRequester("http://10.118.60.44:8080/pentaKill/test/1").execute(new Callback() {
+                new RestGetRequester("http://10.2.4.31:8080/pentaKill/test/1").execute(new MainThreadCallback() {
+
                     @Override
-                    public void onSuccess(String data) {
+                    public void onMainThreadSuccess(String data) throws JSONException {
                         Log.d("result",data);
                     }
 
                     @Override
-                    public void onError(Throwable t) {
+                    public void onMainThreadError(Throwable t) {
                         Log.d("result",t.getMessage());
                     }
                 });
