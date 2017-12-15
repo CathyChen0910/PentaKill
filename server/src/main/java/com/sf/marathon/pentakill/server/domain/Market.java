@@ -37,7 +37,7 @@ public class Market {
 	@Column(name = "GROUP_DURATION")
 	private int groupPeriod;
 	
-	@Column(name = "USE REQUIRE")
+	@Column(name = "USE_REQUIRE")
 	private String userRequire;
 
 	public String getId() {
