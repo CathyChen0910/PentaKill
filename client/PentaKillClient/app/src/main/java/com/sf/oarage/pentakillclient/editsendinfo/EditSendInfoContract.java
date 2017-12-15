@@ -9,10 +9,16 @@ import com.sf.oarage.pentakillclient.base.BaseView;
 
 public interface EditSendInfoContract {
     interface View extends BaseView<Presenter> {
+        String getAddress();
+        String getAddressDetail();
+        String getSenderName();
+        String getSenderPhone();
+        String getSenderCount();
+        String getSenderWeight();
         void showToast(String message);
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<EditSendInfoContract.View> {
         void signOfStore();
         boolean checkRequiredFill();
     }

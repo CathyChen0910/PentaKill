@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sf.oarage.pentakillclient.R;
+import com.sf.oarage.pentakillclient.utils.StringUtils;
 
 /**
  * Created by liushihan on 2017/12/15.
@@ -44,15 +45,63 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
     }
 
     @Override
+    public String getAddress() {
+        if (StringUtils.isBlank(textAddressOfPicker.getText().toString())) {
+            return "";
+        }
+        return textAddressOfPicker.getText().toString();
+    }
+
+    @Override
+    public String getAddressDetail() {
+        if (StringUtils.isBlank(editAddressDetail.getText().toString())) {
+            return "";
+        }
+        return editAddressDetail.getText().toString();
+    }
+
+    @Override
+    public String getSenderName() {
+        if (StringUtils.isBlank(editName.getText().toString())) {
+            return "";
+        }
+        return editName.getText().toString();
+    }
+
+    @Override
+    public String getSenderPhone() {
+        if (StringUtils.isBlank(editPhone.getText().toString())) {
+            return "";
+        }
+        return editPhone.getText().toString();
+    }
+
+    @Override
+    public String getSenderCount() {
+        if (StringUtils.isBlank(editSendCount.getText().toString())) {
+            return "";
+        }
+        return editSendCount.getText().toString();
+    }
+
+    @Override
+    public String getSenderWeight() {
+        if (StringUtils.isBlank(editWeight.getText().toString())) {
+            return "";
+        }
+        return editWeight.getText().toString();
+    }
+
+    @Override
     public void showToast(String message) {
-        Toast.makeText(EditSendInfoActivity.this,"",Toast.LENGTH_SHORT).show();
+        Toast.makeText(EditSendInfoActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_sign:
-                if (mPresenter.checkRequiredFill()){
+                if (mPresenter.checkRequiredFill()) {
                     mPresenter.signOfStore();
                 }
                 break;
