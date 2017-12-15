@@ -151,7 +151,7 @@
             android:id="@+id/btn_sign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorButtonUnder"
+            android:background="@color/colorPrimary"
             android:text="报名集货"
             android:textColor="@color/colorMainBackGround" />
     </LinearLayout>
