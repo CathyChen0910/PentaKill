@@ -137,7 +137,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         mRequirement.setText(Html.fromHtml(marketBean.getUserRequire()));
         mTvWeightRange.setText(String.format(getString(R.string.weight_range), marketBean.getMinWeight(), marketBean.getMaxWeight()));
         mTvRemain.setText(Html.fromHtml(getString(R.string.remaining, marketBean.getLimitNum() - mStoreDetail.getSignedNum())));
-        nowProgress = Double.valueOf(mStoreDetail.getSignedNum() / marketBean.getLimitNum()) * 100;
+        nowProgress = Double.valueOf((double) mStoreDetail.getSignedNum() / marketBean.getLimitNum()) * 100;
         initProgress();
     }
 
