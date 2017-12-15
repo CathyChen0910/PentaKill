@@ -1,5 +1,6 @@
 package com.sf.marathon.pentakill.server.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,13 @@ public class GroupServiceImpl extends TransactionalService implements IGroupServ
 	@Override
 	public List<Group> findAll() {
 		return groupDao.findAll();
+	}
+
+	@Override
+	public List<Group> get(String marketId, Date date) {
+		Group group = new Group();
+		group.setMarketId(marketId);
+		return null;
 	}
 
 }

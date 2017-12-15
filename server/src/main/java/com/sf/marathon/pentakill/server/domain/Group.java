@@ -15,28 +15,28 @@ public class Group {
 	@GeneratedValue
 	@Column(name = "SHIPPING_GROUP_ID")
 	private Long id;
-	
+
 	@Column(name = "MARKET_ID")
-	private Long marketId;
-	
+	private String marketId;
+
 	@Column(name = "CREATE_TIME")
 	private Date createTime;
-	
+
 	@Column(name = "PERIOD_NUMBER")
 	private String periodNum;
-	
+
 	@Column(name = "PICTURE")
 	private String picture;
-	
+
 	@Column(name = "GROUP_TYPE")
 	private String groupType;
-	
+
 	@Column(name = "MIN_BAG_NUMBER_PER_DAY")
 	private int minBagNum;
-	
+
 	@Column(name = "ITEM_WEIGHT")
 	private double itemWeight;
-	
+
 	@Column(name = "PROMISE_USE_PERIOD")
 	private int promisePeriod;
 
@@ -48,11 +48,11 @@ public class Group {
 		this.id = id;
 	}
 
-	public Long getMarketId() {
+	public String getMarketId() {
 		return marketId;
 	}
 
-	public void setMarketId(Long marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 
