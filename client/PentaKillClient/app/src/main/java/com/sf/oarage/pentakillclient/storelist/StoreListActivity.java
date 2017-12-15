@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.sf.oarage.pentakillclient.R;
 import com.sf.oarage.pentakillclient.storelist.data.remote.StoreListBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +26,6 @@ import java.util.List;
 public class StoreListActivity extends AppCompatActivity implements StoreListContract.StoreListView {
 
 
-    private RecyclerView mStoreListView;
     private StoreListAdapter mStoreListAdapter;
     private StoreListContract.StoreListPresenter mPresenter;
     private ProgressDialog mProgressDialog ;
@@ -55,7 +53,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListCon
     }
 
     private void initViews() {
-        mStoreListView = findViewById(R.id.rv_store_list);
+        RecyclerView mStoreListView = findViewById(R.id.rv_store_list);
         mStoreListAdapter = new StoreListAdapter(this);
         mStoreListView.setLayoutManager(new LinearLayoutManager(this));
         mStoreListView.setAdapter(mStoreListAdapter);

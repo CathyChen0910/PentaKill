@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.sf.oarage.pentakillclient.R;
 
-import chihane.jdaddressselector.AddressSelector;
 import chihane.jdaddressselector.BottomDialog;
 import chihane.jdaddressselector.OnAddressSelectedListener;
 import chihane.jdaddressselector.model.City;
@@ -76,12 +75,9 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_sign:
-                if (mPresenter.checkRequiredFill()) {
-                    mPresenter.signOfStore();
-                }
-                break;
+        int i = v.getId();
+        if (i == R.id.btn_sign && mPresenter.checkRequiredFill()) {
+            mPresenter.signOfStore();
         }
     }
 }
