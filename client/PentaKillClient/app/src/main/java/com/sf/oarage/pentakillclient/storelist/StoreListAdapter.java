@@ -9,6 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sf.oarage.pentakillclient.R;
+import com.sf.oarage.pentakillclient.storelist.data.remote.StoreListBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Spawn on 2017/12/15.
@@ -17,6 +21,7 @@ import com.sf.oarage.pentakillclient.R;
 public class StoreListAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
+    private List<StoreListBean> mStoreListBeans;
 
     public StoreListAdapter(Context context){
         mContext = context;
@@ -30,9 +35,11 @@ public class StoreListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        StoreListBean storeListBean = mStoreListBeans.get(position);
         if (holder instanceof StoreListCommListHolder) {
-            ((StoreListCommListHolder) holder).mPurChaseName.setText("123");
-            ((StoreListCommListHolder) holder).mPurChaseCount.setText("11/22sss");
+
+            ((StoreListCommListHolder) holder).mPurChaseName.setText(String.valueOf(storeListBean.getPeriodNum()));
+            ((StoreListCommListHolder) holder).mPurChaseCount.setText(String.valueOf(storeListBean.getId()));
             ((StoreListCommListHolder) holder).mPurChaseJoin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -44,7 +51,14 @@ public class StoreListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 20;
+        if (mStoreListBeans!=null){
+            return mStoreListBeans.size();
+        }
+        return 0;
+    }
+
+    public void setData(List<StoreListBean> storeListBean) {
+        mStoreListBeans = storeListBean;
     }
 
     private static class StoreListCommListHolder extends RecyclerView.ViewHolder {
