@@ -58,6 +58,9 @@ public class StoreDetailActivity extends AppCompatActivity {
         mBtnJoin = findViewById(R.id.btn_join);
     }
 
+    /**
+     *
+     */
     private void loadData() {
 
     }
