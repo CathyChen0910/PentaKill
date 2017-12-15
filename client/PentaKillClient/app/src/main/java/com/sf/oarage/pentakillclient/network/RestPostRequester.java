@@ -15,12 +15,8 @@ public class RestPostRequester extends RestRequester {
     }
 
     @Override
-    protected void onThreadRunning() throws IOException {
-        super.onThreadRunning();
-    }
-
-    @Override
     public void onRequestStart() {
+        //do something
 
     }
 
@@ -39,6 +35,6 @@ public class RestPostRequester extends RestRequester {
 
     @Override
     public void onRequestFinish(String result) {
-
+        //do something
     }
 }
