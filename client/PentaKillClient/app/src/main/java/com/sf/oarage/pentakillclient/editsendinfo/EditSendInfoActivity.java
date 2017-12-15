@@ -1,5 +1,6 @@
 package com.sf.oarage.pentakillclient.editsendinfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,12 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
         editWeight = findViewById(R.id.edit_single_weight);
         btnSign = findViewById(R.id.btn_sign);
         setListener();
+        initData();
+    }
+
+    private void initData() {
+        Intent intent = getIntent();
+        mPresenter.setGroupId("");
     }
 
     private void setListener() {
@@ -133,6 +140,7 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         sDialog.dismissWithAnimation();
+                        mPresenter.doSignUp();
                     }
                 })
                 .show();
