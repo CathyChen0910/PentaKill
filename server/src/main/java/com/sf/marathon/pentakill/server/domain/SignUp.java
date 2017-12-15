@@ -29,10 +29,10 @@ public class SignUp {
 	private String userAddress;
 	
 	@Column(name = "ITEM_NUMBER_PER_DAY")
-	private int numPerDay;
+	private Integer numPerDay;
 	
 	@Column(name = "ITEM_WEIGHT_PER_DAY")
-	private double weightPerDay;
+	private Double weightPerDay;
 	
 	@Column(name = "CREATE_TIME")
 	private Date createTime;
@@ -77,19 +77,19 @@ public class SignUp {
 		this.userAddress = userAddress;
 	}
 
-	public int getNumPerDay() {
+	public Integer getNumPerDay() {
 		return numPerDay;
 	}
 
-	public void setNumPerDay(int numPerDay) {
+	public void setNumPerDay(Integer numPerDay) {
 		this.numPerDay = numPerDay;
 	}
 
-	public double getWeightPerDay() {
+	public Double getWeightPerDay() {
 		return weightPerDay;
 	}
 
-	public void setWeightPerDay(double weightPerDay) {
+	public void setWeightPerDay(Double weightPerDay) {
 		this.weightPerDay = weightPerDay;
 	}
 
@@ -100,4 +100,6 @@ public class SignUp {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
+
+	
 }

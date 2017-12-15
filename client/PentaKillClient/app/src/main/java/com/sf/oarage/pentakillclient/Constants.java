@@ -5,10 +5,21 @@ package com.sf.oarage.pentakillclient;
  */
 
 public interface Constants {
-    String HOST = "http://192.168.100.12/pentaKill";
+    String HOST = "http://192.168.100.12:8080/pentaKill";
 
     interface Method {
+        /**
+         * 获取集货团列表
+         */
         String STORE_LIST = "/group/get";
+        /**
+         * 获取集货团详情
+         */
+        String STORE_DETAIL = "/group/getOne";
+        /**
+         * 获取市场数据
+         */
+        String MARKET_DATA ="/group/getOne/market";
     }
 
 }

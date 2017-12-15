@@ -9,6 +9,7 @@ import android.os.Message;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * 主线程回调Callback
@@ -25,15 +26,24 @@ public abstract class MainThreadCallback implements Callback {
 
     @Override
     public void onSuccess(String t) {
-        Gson gson = new Gson();
-        BaseBean baseBean = gson.fromJson(t, BaseBean.class);
-        if (baseBean.isSuccess()) {
-            Message message = Message.obtain();
-            message.what = MainHandler.WHAT_ON_SUCCESS;
-            message.obj = baseBean.getResult();
-            mainHandler.sendMessage(message);
-        } else {
-            onError(new Throwable(baseBean.getMsg()));
+        try {
+            JSONObject jsonObject = new JSONObject(t);
+            if (jsonObject.has("success")) {
+                boolean success = jsonObject.optBoolean("success");
+                if (success) {
+                    Message message = Message.obtain();
+                    message.what = MainHandler.WHAT_ON_SUCCESS;
+                    message.obj = jsonObject.optString("result");
+                    mainHandler.sendMessage(message);
+                } else {
+                    onError(new Throwable(jsonObject.optString("msg")));
+                }
+
+            }
+
+        } catch (Exception e) {
+            onError(e);
+
         }
     }
 

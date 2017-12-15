@@ -11,4 +11,6 @@ public interface IGroupService {
 	public List<Group> existAvailable(String marketId, Date date);
 
 	public void generate(String marketId);
+	
+	public Group getOne(Long id);
 }

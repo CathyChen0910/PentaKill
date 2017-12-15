@@ -28,7 +28,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListCon
 
     private StoreListAdapter mStoreListAdapter;
     private StoreListContract.StoreListPresenter mPresenter;
-    private ProgressDialog mProgressDialog ;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,15 +57,6 @@ public class StoreListActivity extends AppCompatActivity implements StoreListCon
         mStoreListAdapter = new StoreListAdapter(this);
         mStoreListView.setLayoutManager(new LinearLayoutManager(this));
         mStoreListView.setAdapter(mStoreListAdapter);
-        //test
-        TextView viewById = findViewById(R.id.tv_click_next);
-        viewById.setMovementMethod(LinkMovementMethod.getInstance());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            viewById.setText(Html.fromHtml("<a href=\"cby://oarage.sf.com/openwith?storeId=091318\">启动应用程序</a> ", Html.FROM_HTML_MODE_LEGACY));
-        } else {
-            viewById.setText(Html.fromHtml("<a href=\"cby://oarage.sf.com/openwith?storeId=091318\">启动应用程序</a> "));
-        }
-
     }
 
     @Override
@@ -82,6 +73,6 @@ public class StoreListActivity extends AppCompatActivity implements StoreListCon
     @Override
     public void onDataListFail(String message) {
         mProgressDialog.dismiss();
-        Toast.makeText(this, "请求失败："+message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.load_fail) + message, Toast.LENGTH_SHORT).show();
     }
 }

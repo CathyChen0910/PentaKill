@@ -2,6 +2,10 @@ package com.sf.oarage.pentakillclient.storedetail;
 
 import com.sf.oarage.pentakillclient.base.BasePresenter;
 import com.sf.oarage.pentakillclient.base.BaseView;
+import com.sf.oarage.pentakillclient.storedetail.data.remote.MarketBean;
+import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailBean;
+
+import java.util.List;
 
 /**
  * Created by cathy chen on 2017/12/15.
@@ -13,7 +17,12 @@ public interface StoreDetailContract {
         /**
          * 加载列表
          */
-        void loadStoreList();
+        void loadStoreDetail(String storeId);
+
+        /**
+         * 加载市场数据
+         */
+        void loadMarket(String marketId);
     }
 
     interface StoreDetailView extends BaseView<StoreDetailPresenter> {
@@ -22,7 +31,12 @@ public interface StoreDetailContract {
          * 数据回来的时候
          * @param
          */
-//        void onDataListSuccess(StoreDetailBean> );
+        void onDataDetailSuccess(StoreDetailBean storeDetailBean );
+
+        /**
+         * 市场数据成功回调
+         */
+        void onMarketDataSuccess(MarketBean marketBean);
 
         /**
          * 数据请求失败
