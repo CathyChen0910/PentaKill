@@ -2,6 +2,7 @@ package com.sf.oarage.pentakillclient.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.util.Log;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -10,14 +11,19 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  * Created by liushihan on 2017/12/15.
  */
 
 public class QrCodeUtil {
-    private static int IMAGE_HALFWIDTH = 50;
+
+    private static final String UTF_8 = "utf_8";
+    public static final String TAG = "QrCodeUtil";
+    private static int IMAGE_HALF_WIDTH = 50;
+    
+    private QrCodeUtil(){}
 
     /**
      * 生成二维码，默认大小为500*500
@@ -38,8 +44,8 @@ public class QrCodeUtil {
      */
     public static Bitmap createQRCode(String text, int size) {
         try {
-            Hashtable<EncodeHintType, String> hints = new Hashtable<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+            HashMap<EncodeHintType, String> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, UTF_8);
             BitMatrix bitMatrix = new QRCodeWriter().encode(text,
                     BarcodeFormat.QR_CODE, size, size, hints);
             int[] pixels = new int[size * size];
@@ -57,7 +63,7 @@ public class QrCodeUtil {
             bitmap.setPixels(pixels, 0, size, 0, 0, size, size);
             return bitmap;
         } catch (WriterException e) {
-            e.printStackTrace();
+            Log.e(TAG,"msg",e);
             return null;
         }
     }
@@ -72,9 +78,9 @@ public class QrCodeUtil {
      */
     public static Bitmap createQRCodeWithLogo2(String text, int size, Bitmap mBitmap) {
         try {
-            IMAGE_HALFWIDTH = size / 10;
-            Hashtable<EncodeHintType, Object> hints = new Hashtable<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+            IMAGE_HALF_WIDTH = size / 10;
+            HashMap<EncodeHintType, Object> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, UTF_8);
 
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrix = new QRCodeWriter().encode(text,
@@ -100,7 +106,7 @@ public class QrCodeUtil {
             bitmap.setPixels(pixels, 0, size, 0, 0, size, size);
             return bitmap;
         } catch (WriterException e) {
-            e.printStackTrace();
+            Log.e(TAG,"msg",e);
             return null;
         }
     }
@@ -115,9 +121,9 @@ public class QrCodeUtil {
      */
     public static Bitmap createQRCodeWithLogo3(String text, int size, Bitmap mBitmap) {
         try {
-            IMAGE_HALFWIDTH = size / 10;
-            Hashtable<EncodeHintType, Object> hints = new Hashtable<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+            IMAGE_HALF_WIDTH = size / 10;
+            HashMap<EncodeHintType, Object> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, UTF_8);
 
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrix = new QRCodeWriter().encode(text,
@@ -142,7 +148,7 @@ public class QrCodeUtil {
             bitmap.setPixels(pixels, 0, size, 0, 0, size, size);
             return bitmap;
         } catch (WriterException e) {
-            e.printStackTrace();
+            Log.e(TAG,"msg",e);
             return null;
         }
     }
@@ -157,9 +163,9 @@ public class QrCodeUtil {
      */
     public static Bitmap createQRCodeWithLogo4(String text, int size, Bitmap mBitmap) {
         try {
-            IMAGE_HALFWIDTH = size / 10;
-            Hashtable<EncodeHintType, Object> hints = new Hashtable<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+            IMAGE_HALF_WIDTH = size / 10;
+            HashMap<EncodeHintType, Object> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, UTF_8);
 
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrix = new QRCodeWriter().encode(text,
@@ -190,7 +196,7 @@ public class QrCodeUtil {
             bitmap.setPixels(pixels, 0, size, 0, 0, size, size);
             return bitmap;
         } catch (WriterException e) {
-            e.printStackTrace();
+            Log.e(TAG,"msg",e);
             return null;
         }
     }
@@ -204,9 +210,9 @@ public class QrCodeUtil {
      */
     public static Bitmap createQRCodeWithLogo5(String text, int size, Bitmap mBitmap) {
         try {
-            IMAGE_HALFWIDTH = size / 10;
-            Hashtable<EncodeHintType, Object> hints = new Hashtable<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+            IMAGE_HALF_WIDTH = size / 10;
+            HashMap<EncodeHintType, Object> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, UTF_8);
 
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             BitMatrix bitMatrix = new QRCodeWriter().encode(text,
@@ -221,8 +227,8 @@ public class QrCodeUtil {
             int halfH = height / 2;
 
             Matrix m = new Matrix();
-            float sx = (float) 2 * IMAGE_HALFWIDTH / mBitmap.getWidth();
-            float sy = (float) 2 * IMAGE_HALFWIDTH
+            float sx = (float) 2 * IMAGE_HALF_WIDTH / mBitmap.getWidth();
+            float sy = (float) 2 * IMAGE_HALF_WIDTH
                     / mBitmap.getHeight();
             m.setScale(sx, sy);
             //设置缩放信息
@@ -233,13 +239,13 @@ public class QrCodeUtil {
             int[] pixels = new int[size * size];
             for (int y = 0; y < size; y++) {
                 for (int x = 0; x < size; x++) {
-                    if (x > halfW - IMAGE_HALFWIDTH && x < halfW + IMAGE_HALFWIDTH
-                            && y > halfH - IMAGE_HALFWIDTH
-                            && y < halfH + IMAGE_HALFWIDTH) {
+                    if (x > halfW - IMAGE_HALF_WIDTH && x < halfW + IMAGE_HALF_WIDTH
+                            && y > halfH - IMAGE_HALF_WIDTH
+                            && y < halfH + IMAGE_HALF_WIDTH) {
                         //该位置用于存放图片信息
                         //记录图片每个像素信息
                         pixels[y * width + x] = mBitmap.getPixel(x - halfW
-                                + IMAGE_HALFWIDTH, y - halfH + IMAGE_HALFWIDTH);
+                                + IMAGE_HALF_WIDTH, y - halfH + IMAGE_HALF_WIDTH);
                     } else {
                         if (bitMatrix.get(x, y)) {
                             pixels[y * size + x] = 0xff37b19e;
@@ -254,7 +260,7 @@ public class QrCodeUtil {
             bitmap.setPixels(pixels, 0, size, 0, 0, size, size);
             return bitmap;
         } catch (WriterException e) {
-            e.printStackTrace();
+            Log.e(TAG,"msg",e);
             return null;
         }
     }
@@ -268,9 +274,9 @@ public class QrCodeUtil {
      */
     public static Bitmap createQRCodeWithLogo6(String text, int size, Bitmap mBitmap) {
         try {
-            IMAGE_HALFWIDTH = size / 10;
-            Hashtable<EncodeHintType, Object> hints = new Hashtable<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+            IMAGE_HALF_WIDTH = size / 10;
+            HashMap<EncodeHintType, Object> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, UTF_8);
             /*
              * 设置容错级别，默认为ErrorCorrectionLevel.L
              * 因为中间加入logo所以建议你把容错级别调至H,否则可能会出现识别不了
@@ -288,8 +294,8 @@ public class QrCodeUtil {
             int halfH = height / 2;
 
             Matrix m = new Matrix();
-            float sx = (float) 2 * IMAGE_HALFWIDTH / mBitmap.getWidth();
-            float sy = (float) 2 * IMAGE_HALFWIDTH
+            float sx = (float) 2 * IMAGE_HALF_WIDTH / mBitmap.getWidth();
+            float sy = (float) 2 * IMAGE_HALF_WIDTH
                     / mBitmap.getHeight();
             m.setScale(sx, sy);
             //设置缩放信息
@@ -300,13 +306,13 @@ public class QrCodeUtil {
             int[] pixels = new int[size * size];
             for (int y = 0; y < size; y++) {
                 for (int x = 0; x < size; x++) {
-                    if (x > halfW - IMAGE_HALFWIDTH && x < halfW + IMAGE_HALFWIDTH
-                            && y > halfH - IMAGE_HALFWIDTH
-                            && y < halfH + IMAGE_HALFWIDTH) {
+                    if (x > halfW - IMAGE_HALF_WIDTH && x < halfW + IMAGE_HALF_WIDTH
+                            && y > halfH - IMAGE_HALF_WIDTH
+                            && y < halfH + IMAGE_HALF_WIDTH) {
                         //该位置用于存放图片信息
                         //记录图片每个像素信息
                         pixels[y * width + x] = mBitmap.getPixel(x - halfW
-                                + IMAGE_HALFWIDTH, y - halfH + IMAGE_HALFWIDTH);
+                                + IMAGE_HALF_WIDTH, y - halfH + IMAGE_HALF_WIDTH);
                     } else {
                         if (bitMatrix.get(x, y)) {
                             pixels[y * size + x] = 0xff111111;
@@ -324,7 +330,7 @@ public class QrCodeUtil {
             bitmap.setPixels(pixels, 0, size, 0, 0, size, size);
             return bitmap;
         } catch (WriterException e) {
-            e.printStackTrace();
+            Log.e(TAG,"msg",e);
             return null;
         }
     }

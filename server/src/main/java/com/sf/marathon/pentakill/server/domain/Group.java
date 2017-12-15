@@ -32,13 +32,19 @@ public class Group {
 	private String groupType;
 
 	@Column(name = "MIN_BAG_NUMBER_PER_DAY")
-	private int minBagNum;
+	private Integer minBagNum;
 
 	@Column(name = "ITEM_WEIGHT")
-	private double itemWeight;
+	private Double itemWeight;
 
 	@Column(name = "PROMISE_USE_PERIOD")
-	private int promisePeriod;
+	private Integer promisePeriod;
+
+	@Column(name = "END_TIME")
+	private Date endTime;
+
+	@Column(name = "MIN_PRICE")
+	private Double minPrice;
 
 	public Long getId() {
 		return id;
@@ -88,28 +94,44 @@ public class Group {
 		this.groupType = groupType;
 	}
 
-	public int getMinBagNum() {
+	public Integer getMinBagNum() {
 		return minBagNum;
 	}
 
-	public void setMinBagNum(int minBagNum) {
+	public void setMinBagNum(Integer minBagNum) {
 		this.minBagNum = minBagNum;
 	}
 
-	public double getItemWeight() {
+	public Double getItemWeight() {
 		return itemWeight;
 	}
 
-	public void setItemWeight(double itemWeight) {
+	public void setItemWeight(Double itemWeight) {
 		this.itemWeight = itemWeight;
 	}
 
-	public int getPromisePeriod() {
+	public Integer getPromisePeriod() {
 		return promisePeriod;
 	}
 
-	public void setPromisePeriod(int promisePeriod) {
+	public void setPromisePeriod(Integer promisePeriod) {
 		this.promisePeriod = promisePeriod;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public Double getMinPrice() {
+		return minPrice;
+	}
+
+	public void setMinPrice(Double minPrice) {
+		this.minPrice = minPrice;
 	}
 
 }

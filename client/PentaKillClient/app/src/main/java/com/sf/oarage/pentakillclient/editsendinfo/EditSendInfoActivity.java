@@ -12,6 +12,13 @@ import android.widget.Toast;
 import com.sf.oarage.pentakillclient.R;
 import com.sf.oarage.pentakillclient.utils.StringUtils;
 
+import chihane.jdaddressselector.BottomDialog;
+import chihane.jdaddressselector.OnAddressSelectedListener;
+import chihane.jdaddressselector.model.City;
+import chihane.jdaddressselector.model.County;
+import chihane.jdaddressselector.model.Province;
+import chihane.jdaddressselector.model.Street;
+
 /**
  * Created by liushihan on 2017/12/15.
  */
@@ -37,6 +44,24 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
         editSendCount = findViewById(R.id.edit_send_count);
         editWeight = findViewById(R.id.edit_single_weight);
         btnSign = findViewById(R.id.btn_sign);
+        setListener();
+    }
+
+    private void setListener() {
+        textAddressOfPicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomDialog dialog = new BottomDialog(EditSendInfoActivity.this);
+                dialog.setOnAddressSelectedListener(new OnAddressSelectedListener() {
+                    @Override
+                    public void onAddressSelected(Province province, City city, County county, Street street) {
+                        //判空
+
+                    }
+                });
+                dialog.show();
+            }
+        });
     }
 
     @Override
@@ -99,12 +124,9 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_sign:
-                if (mPresenter.checkRequiredFill()) {
-                    mPresenter.signOfStore();
-                }
-                break;
+        int i = v.getId();
+        if (i == R.id.btn_sign && mPresenter.checkRequiredFill()) {
+            mPresenter.signOfStore();
         }
     }
 }

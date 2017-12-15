@@ -4,7 +4,6 @@ import com.sf.oarage.pentakillclient.base.BasePresenter;
 import com.sf.oarage.pentakillclient.base.BaseView;
 import com.sf.oarage.pentakillclient.storelist.data.remote.StoreListBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
