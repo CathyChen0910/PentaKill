@@ -30,7 +30,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListCon
     private RecyclerView mStoreListView;
     private StoreListAdapter mStoreListAdapter;
     private StoreListContract.StoreListPresenter mPresenter;
-    private ProgressDialog mProgressDialog ;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,6 +84,6 @@ public class StoreListActivity extends AppCompatActivity implements StoreListCon
     @Override
     public void onDataListFail(String message) {
         mProgressDialog.dismiss();
-        Toast.makeText(this, "请求失败："+message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.load_fail) + message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,6 +1,8 @@
 package com.sf.oarage.pentakillclient.storedetail;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -8,16 +10,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.sf.oarage.pentakillclient.Constants;
 import com.sf.oarage.pentakillclient.R;
 import com.sf.oarage.pentakillclient.RoundedRectProgressBar;
 import com.sf.oarage.pentakillclient.editsendinfo.EditSendInfoActivity;
+import com.sf.oarage.pentakillclient.storedetail.data.remote.MarketBean;
+import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailBean;
+import com.sf.oarage.pentakillclient.storelist.StoreListContract;
+import com.sf.oarage.pentakillclient.storelist.data.remote.StoreListBean;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class StoreDetailActivity extends AppCompatActivity {
+public class StoreDetailActivity extends AppCompatActivity implements StoreDetailContract.StoreDetailView {
 
     //集货团
     private TextView mTvMarket;
@@ -47,6 +56,12 @@ public class StoreDetailActivity extends AppCompatActivity {
     private int nowProgress;
     private Timer timer;
 
+    private StoreDetailContract.StoreDetailPresenter mPresenter;
+    private ProgressDialog mProgressDialog;
+    private StoreDetailBean mStoreDetail;
+    private String storeId;
+    private String marketId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +70,6 @@ public class StoreDetailActivity extends AppCompatActivity {
         initView();
         initListener();
         loadData();
-        updateView();
         initProgress();
 
     }
@@ -95,22 +109,34 @@ public class StoreDetailActivity extends AppCompatActivity {
      */
     private void loadData() {
         //网络请求返回一个数据集
-
+        Uri uri = getIntent().getData();
+        if (null != uri) {
+            storeId = uri.getQueryParameter("store_id");
+            marketId = uri.getQueryParameter("market_id");
+        }
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("加载中...");
+        mProgressDialog.show();
+        mPresenter.loadStoreDetail(storeId);
     }
 
-    private void updateView() {
-        mTvMarket.setText("鞋服专送080901期");
-        mTvWeightRange.setText("1.5~5kg");
-        mTvMinNum.setText(Html.fromHtml(getString(R.string.min_number, 30)));
-        mTvMinPrice.setText(Html.fromHtml(getString(R.string.price, 6, 1.5)));
-        nowProgress = 80;
-        mTvRemain.setText(Html.fromHtml(getString(R.string.remaining, 7)));
-        mTvEndTime.setText(Html.fromHtml(getString(R.string.end_time, "8月9日")));
-        mTvParticipate.setText(Html.fromHtml(getString(R.string.participate, 15)));
-
+    private void updateStoreView(StoreDetailBean storeDetailBean) {
+        mTvMarket.setText(storeDetailBean.getPeriodNum());
+        mTvMinNum.setText(Html.fromHtml(getString(R.string.min_number, storeDetailBean.getMinBagNum())));
+        mTvMinPrice.setText(Html.fromHtml(getString(R.string.price, storeDetailBean.getMinWeight(), 1)));
+        mTvEndTime.setText(Html.fromHtml(getString(R.string.end_time, storeDetailBean.getEndTime())));
         Glide.with(this)
-                .load("http://inthecheesefactory.com/uploads/source/nestedfragment/fragments.png")
+                .load(Constants.HOST + "/"+storeDetailBean.getPicture())
                 .into(mIvStorePic);
+
+        mTvRemain.setText(Html.fromHtml(getString(R.string.remaining, 7)));
+        mTvParticipate.setText(Html.fromHtml(getString(R.string.participate, 15)));
+    }
+
+    private void updateMarketView(MarketBean marketBean) {
+        mTvWeightRange.setText(String.format(getString(R.string.weight_range), marketBean.getMinWeight(), marketBean.getMaxWeight()));
+
+//        nowProgress = mStoreDetail.getEndTime() / marketBean.getLimitNum();
     }
 
     private void nextStep() {
@@ -132,8 +158,32 @@ public class StoreDetailActivity extends AppCompatActivity {
                 }
             }
         }, 0, 30);
-
     }
 
+    @Override
+    public void setPresenter(StoreDetailContract.StoreDetailPresenter presenter) {
+        this.mPresenter = presenter;
+    }
 
+    @Override
+    public void onDataDetailSuccess(StoreDetailBean storeDetailBean) {
+        mProgressDialog.dismiss();
+        this.mStoreDetail = storeDetailBean;
+        updateStoreView(mStoreDetail);
+//        mPresenter.loadMarket();
+    }
+
+    @Override
+    public void onMarketDataSuccess(MarketBean marketBean) {
+        if (null != mProgressDialog && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+        updateMarketView(marketBean);
+    }
+
+    @Override
+    public void onDataListFail(String message) {
+        mProgressDialog.dismiss();
+        Toast.makeText(this, getString(R.string.load_fail) + message, Toast.LENGTH_SHORT).show();
+    }
 }

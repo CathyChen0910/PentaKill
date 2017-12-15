@@ -7,5 +7,7 @@
     <string name="recent">最近参与</string>
     <string name="participate">已有<![CDATA[<font color=\'#FF6532\'>%d</font>]]>人参团</string>
     <string name="join_now">立即参与</string>
+    <string name="load_fail">请求失败：</string>
     <string name="remaining">还差<![CDATA[<font color=\'#FF6532\'>%d</font>]]>人即可成团</string>
+    <string name="weight_range">%.1fkg~%.1fkg</string>
 </resources>
