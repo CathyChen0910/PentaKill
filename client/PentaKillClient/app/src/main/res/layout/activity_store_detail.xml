@@ -81,13 +81,14 @@
             android:layout_width="0dp"
             android:layout_height="24dp"
             android:layout_weight="1"
-            app:backColor="#E6E6E6"
-            app:barColor="#33CC99"
+            app:backColor="@color/colorBody1"
+            app:barColor="@color/colorPrimary"
             app:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/tv_remaining"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
+            android:singleLine="true"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:text="@string/remaining" />
