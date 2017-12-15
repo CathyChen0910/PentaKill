@@ -8,17 +8,79 @@
         android:id="@+id/text_group_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:layout_marginTop="@dimen/font6"
+        android:gravity="center"
+        android:text="鞋服专送"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/font0" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/font7"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/text_weight"
-            android:textSize=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="全国"
+            android:textSize="@dimen/font0" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/line_vertical" />
+
+        <TextView
+            android:id="@+id/text_everyday_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="每日承诺寄件量最低20"
+            android:textSize="@dimen/font0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/font0"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/image_qrcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_scan_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/font0"
+        android:text="扫一扫或长按"
+        android:textSize="@dimen/font0" />
+
+    <Button
+        android:id="@+id/btn_save_qrcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/font0"
+        android:layout_marginRight="@dimen/font0"
+        android:background="@color/colorPrimaryDark"
+        android:text="保存分享小程序码"
+        android:textColor="@color/colorMainBackGround"
+        android:textSize="@dimen/font0" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="长按识别二维码，查看详情" />
 </LinearLayout>
