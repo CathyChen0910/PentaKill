@@ -56,6 +56,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
     private StoreDetailContract.StoreDetailPresenter mPresenter;
     private ProgressDialog mProgressDialog;
     private StoreDetailBean mStoreDetail;
+    private MarketBean mMarketBean;
     private String storeId;
     private String marketId;
 
@@ -138,6 +139,11 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
     private void nextStep() {
         Intent intent = new Intent();
         intent.setClass(StoreDetailActivity.this, EditSendInfoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("period", mStoreDetail.getPeriodNum());
+        bundle.putDouble("minWeight", mMarketBean.getMinWeight());
+        bundle.putDouble("maxWeight", mMarketBean.getMaxWeight());
+        bundle.putInt("minBagNum", mStoreDetail.getMinBagNum());
         startActivity(intent);
     }
 
@@ -174,6 +180,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         if (null != mProgressDialog && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+        this.mMarketBean = marketBean;
         updateMarketView(marketBean);
     }
 
