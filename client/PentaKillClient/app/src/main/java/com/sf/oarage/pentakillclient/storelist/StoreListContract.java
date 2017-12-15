@@ -9,7 +9,7 @@ import com.sf.oarage.pentakillclient.base.BaseView;
 
 public interface StoreListContract {
 
-    interface StoreListPresenter extends BasePresenter{
+    interface StoreListPresenter extends BasePresenter<StoreListView>{
 
     }
 

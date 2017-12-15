@@ -1,20 +1,14 @@
 package com.sf.oarage.pentakillclient.storelist;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import com.sf.oarage.pentakillclient.R;
@@ -41,8 +35,8 @@ public class StoreListActivity extends AppCompatActivity implements StoreListCon
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         initViews();
-        StoreListContract.StoreListPresenter presenter = new StoreListPresneterImpl();
-        presenter.start();
+        StoreListContract.StoreListPresenter presenter = new StoreListPresenterImpl();
+        presenter.start(this);
     }
 
     private void initViews() {
