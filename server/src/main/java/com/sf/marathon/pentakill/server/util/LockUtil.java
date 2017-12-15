@@ -11,6 +11,10 @@ public class LockUtil {
 
 	}
 
+	static class Locker {
+
+	}
+
 	public static synchronized boolean lock(String key) {
 		if (set.contains(key)) {
 			return false;

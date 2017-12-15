@@ -47,7 +47,7 @@ public class StoreDetailPresenterImpl implements StoreDetailContract.StoreDetail
 
     @Override
     public void loadMarket(String marketId) {
-        mStoreDetailModel.reqMarket("",new MainThreadCallback() {
+        mStoreDetailModel.reqMarket(marketId,new MainThreadCallback() {
             @Override
             public void onMainThreadSuccess(String data) throws JSONException {
                 //处理
