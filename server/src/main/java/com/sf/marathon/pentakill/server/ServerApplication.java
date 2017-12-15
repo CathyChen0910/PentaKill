@@ -24,9 +24,9 @@ public class ServerApplication extends SpringBootServletInitializer {
 	}
 
 	/** Set the ThreadPoolExecutor's core pool size. */
-	private final static int corePoolSize = 10;
+	private final static int corePoolSize = 1;
 	/** Set the ThreadPoolExecutor's maximum pool size. */
-	private final static int maxPoolSize = 200;
+	private final static int maxPoolSize = 1;
 	/** Set the capacity for the ThreadPoolExecutor's BlockingQueue. */
 	private final static int queueCapacity = 10;
 
