@@ -66,4 +66,9 @@ public class GroupServiceImpl extends TransactionalService implements IGroupServ
 		return null;
 	}
 
+	@Override
+	public Group getOne(Long id) {
+		return groupDao.findOne(id);
+	}
+
 }
