@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.sf.oarage.pentakillclient.R;
 
 /**
- * Created by tangbin on 2017/12/15.
+ * Created by Spawn on 2017/12/15.
  */
 
 public class StoreListAdapter extends RecyclerView.Adapter {
