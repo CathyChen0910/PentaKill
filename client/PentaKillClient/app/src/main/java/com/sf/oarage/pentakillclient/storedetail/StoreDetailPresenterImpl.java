@@ -2,14 +2,12 @@ package com.sf.oarage.pentakillclient.storedetail;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.sf.oarage.pentakillclient.network.MainThreadCallback;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.MarketBean;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailBean;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailModel;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailModelImpl;
-import com.sf.oarage.pentakillclient.storelist.data.remote.StoreListBean;
 
 import org.json.JSONException;
 

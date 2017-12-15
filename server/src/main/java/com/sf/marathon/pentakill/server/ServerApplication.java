@@ -24,11 +24,11 @@ public class ServerApplication extends SpringBootServletInitializer {
 	}
 
 	/** Set the ThreadPoolExecutor's core pool size. */
-	private final static int corePoolSize = 10;
+	private final static int corePoolSize = 4;
 	/** Set the ThreadPoolExecutor's maximum pool size. */
-	private final static int maxPoolSize = 200;
+	private final static int maxPoolSize = 4;
 	/** Set the capacity for the ThreadPoolExecutor's BlockingQueue. */
-	private final static int queueCapacity = 10;
+	private final static int queueCapacity = 100;
 
 	@Bean
 	public Executor mySimpleAsync() {

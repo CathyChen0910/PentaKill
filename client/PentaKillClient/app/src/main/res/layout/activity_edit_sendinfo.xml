@@ -52,6 +52,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:maxLines="1"
+                android:textColor="@color/colorContentBlack"
                 android:text="广东省深圳市"
                 android:textSize="20dp" />
 
