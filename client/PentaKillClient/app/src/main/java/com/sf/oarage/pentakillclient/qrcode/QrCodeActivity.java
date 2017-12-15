@@ -30,7 +30,7 @@ public class QrCodeActivity extends AppCompatActivity {
         long id = intent.getLongExtra("id", 0);
         long market_id = intent.getLongExtra("market_id", 0);
         String url = Constants.HOST + "/qc/" + id + "/" + market_id;
-        imageQrCode.setImageBitmap(QrCodeUtil.createQRCodeWithLogo6(url, 500, drawableToBitmap(getResources().getDrawable(R.mipmap.qrcode_logo))));
+        imageQrCode.setImageBitmap(QrCodeUtil.createQRCodeWithLogo6(url, 650, drawableToBitmap(getResources().getDrawable(R.mipmap.qrcode_logo))));
 
     }
 
