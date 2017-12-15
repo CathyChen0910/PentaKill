@@ -158,7 +158,6 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
 
     @Override
     public void showWechatDialog() {
-
         new AlertDialog.Builder(this)
                 .setTitle("报名成功")
                 .setMessage("转发给更多的朋友或生成图片分享至朋友圈，即可加快集货进度~")
