@@ -1,4 +1,4 @@
-package com.sf.oarage.pentakillclient;
+package com.sf.oarage.pentakillclient.storedetail;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.sf.oarage.pentakillclient.R;
+import com.sf.oarage.pentakillclient.RoundedRectProgressBar;
 import com.sf.oarage.pentakillclient.editsendinfo.EditSendInfoActivity;
 
 import java.util.Timer;
