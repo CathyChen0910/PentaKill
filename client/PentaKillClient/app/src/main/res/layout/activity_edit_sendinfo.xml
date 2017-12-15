@@ -52,8 +52,8 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:maxLines="1"
-                android:textColor="@color/colorContentBlack"
                 android:text="广东省深圳市"
+                android:textColor="@color/colorContentBlack"
                 android:textSize="20dp" />
 
             <ImageView
@@ -117,7 +117,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:background="@null"
-            android:hint="请填写寄件人电话" />
+            android:hint="请填写寄件人电话"
+            android:inputType="phone" />
 
         <include layout="@layout/include_divider_line" />
 
@@ -128,7 +129,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:background="@null"
-            android:hint="请填写寄件数量（至少20件）" />
+            android:hint="请填写寄件数量（至少20件）"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edit_single_weight"
@@ -137,7 +139,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:background="@null"
-            android:hint="请选择单件平均重量" />
+            android:hint="请选择单件平均重量"
+            android:inputType="number" />
 
     </LinearLayout>
 

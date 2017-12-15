@@ -1,6 +1,8 @@
 package com.sf.oarage.pentakillclient.editsendinfo;
 
 
+import com.sf.oarage.pentakillclient.editsendinfo.data.remote.EditSendInfoModel;
+import com.sf.oarage.pentakillclient.editsendinfo.data.remote.EditSendInfoModelImpl;
 import com.sf.oarage.pentakillclient.utils.StringUtils;
 
 /**
@@ -9,15 +11,17 @@ import com.sf.oarage.pentakillclient.utils.StringUtils;
 
 public class EditSendInfoPresenter implements EditSendInfoContract.Presenter {
     EditSendInfoContract.View mView;
+    EditSendInfoModel editSendInfoModel;
 
     @Override
     public void start(EditSendInfoContract.View view) {
         this.mView = view;
+        editSendInfoModel = new EditSendInfoModelImpl();
     }
 
     @Override
     public void signOfStore() {
-
+        mView.showWechatDialog();
     }
 
     @Override
