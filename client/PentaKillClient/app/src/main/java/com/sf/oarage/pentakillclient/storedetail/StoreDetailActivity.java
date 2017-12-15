@@ -19,10 +19,7 @@ import com.sf.oarage.pentakillclient.RoundedRectProgressBar;
 import com.sf.oarage.pentakillclient.editsendinfo.EditSendInfoActivity;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.MarketBean;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailBean;
-import com.sf.oarage.pentakillclient.storelist.StoreListContract;
-import com.sf.oarage.pentakillclient.storelist.data.remote.StoreListBean;
 
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -71,7 +68,6 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         initListener();
         loadData();
         initProgress();
-
     }
 
     /**
@@ -101,7 +97,6 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
                 nextStep();
             }
         });
-
     }
 
     /**
@@ -115,7 +110,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
             marketId = uri.getQueryParameter("market_id");
         }
         mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setMessage("加载中...");
+        mProgressDialog.setMessage(getString(R.string.loading));
         mProgressDialog.show();
         mPresenter.loadStoreDetail(storeId);
     }
@@ -126,17 +121,16 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         mTvMinPrice.setText(Html.fromHtml(getString(R.string.price, storeDetailBean.getMinWeight(), 1)));
         mTvEndTime.setText(Html.fromHtml(getString(R.string.end_time, storeDetailBean.getEndTime())));
         Glide.with(this)
-                .load(Constants.HOST + "/"+storeDetailBean.getPicture())
+                .load(Constants.HOST + "/" + storeDetailBean.getPicture())
                 .into(mIvStorePic);
 
-        mTvRemain.setText(Html.fromHtml(getString(R.string.remaining, 7)));
-        mTvParticipate.setText(Html.fromHtml(getString(R.string.participate, 15)));
+        mTvParticipate.setText(Html.fromHtml(getString(R.string.participate, mStoreDetail.getSignedNum())));
     }
 
     private void updateMarketView(MarketBean marketBean) {
         mTvWeightRange.setText(String.format(getString(R.string.weight_range), marketBean.getMinWeight(), marketBean.getMaxWeight()));
-
-//        nowProgress = mStoreDetail.getEndTime() / marketBean.getLimitNum();
+        mTvRemain.setText(Html.fromHtml(getString(R.string.remaining, marketBean.getLimitNum() - mStoreDetail.getSignedNum())));
+        nowProgress = mStoreDetail.getSignedNum() / marketBean.getLimitNum() * 100;
     }
 
     private void nextStep() {
@@ -170,7 +164,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         mProgressDialog.dismiss();
         this.mStoreDetail = storeDetailBean;
         updateStoreView(mStoreDetail);
-//        mPresenter.loadMarket();
+        mPresenter.loadMarket(marketId);
     }
 
     @Override

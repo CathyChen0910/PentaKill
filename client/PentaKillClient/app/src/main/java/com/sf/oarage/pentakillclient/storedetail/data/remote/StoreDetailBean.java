@@ -30,6 +30,19 @@ public class StoreDetailBean{
      */
     private String picture;
 
+    /**
+     * 当前已报名人数
+     */
+    private int signedNum;
+
+    public int getSignedNum() {
+        return signedNum;
+    }
+
+    public void setSignedNum(int signedNum) {
+        this.signedNum = signedNum;
+    }
+
     public String getPicture() {
         return picture;
     }
@@ -78,6 +91,7 @@ public class StoreDetailBean{
                 ", minBagNum=" + minBagNum +
                 ", endTime='" + endTime + '\'' +
                 ", picture='" + picture + '\'' +
+                ", signedNum=" + signedNum +
                 '}';
     }
 }
