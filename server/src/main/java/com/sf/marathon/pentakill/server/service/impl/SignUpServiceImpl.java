@@ -49,6 +49,7 @@ public class SignUpServiceImpl extends TransactionalService implements ISignUpSe
 
 		SignUp signUp = BeanUtil.copyProperties(signUpReq, SignUp.class);
 		signUp.setCreateTime(TimeUtil.now());
+		signUpDao.save(signUp);
 		if (haveSignUpNum + 1 == limitNum) {
 			generateGroupTask.generate(market.getId());
 		}
