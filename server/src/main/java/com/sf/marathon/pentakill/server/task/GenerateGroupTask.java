@@ -9,8 +9,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
-import com.sf.marathon.pentakill.server.domain.Market;
-import com.sf.marathon.pentakill.server.service.IMarketService;
+import com.sf.marathon.pentakill.server.service.IGroupService;
 
 @Component
 public class GenerateGroupTask {
@@ -18,14 +17,14 @@ public class GenerateGroupTask {
 	private static final Log log = LogFactory.getLog(GenerateGroupTask.class);
 
 	@Autowired
-	private IMarketService marketService;
+	private IGroupService groupService;
 
 	@Async("mySimpleAsync")
-	public Future<String> generate(String marketId) throws InterruptedException {
+	public Future<Boolean> generate(String marketId) {
 		// lock marketId
-		Market byId = marketService.getById(marketId);
+		groupService.generate(marketId);
 		// unlock
-		return new AsyncResult<>("Task1 accomplished!");
+		return new AsyncResult<>(true);
 	}
 
 }
