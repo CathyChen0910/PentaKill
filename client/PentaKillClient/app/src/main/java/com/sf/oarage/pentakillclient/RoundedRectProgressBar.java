@@ -57,7 +57,7 @@ public class RoundedRectProgressBar extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        radius = this.getMeasuredHeight() / 5;
+        radius = this.getMeasuredHeight()/2;
     }
 
     @Override

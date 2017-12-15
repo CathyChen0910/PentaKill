@@ -3,11 +3,13 @@ package com.sf.oarage.pentakillclient;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sf.oarage.pentakillclient.editsendinfo.EditSendInfoActivity;
 
 import java.util.Timer;
@@ -40,6 +42,7 @@ public class StoreDetailActivity extends AppCompatActivity {
 
     //进度百分比
     private int progress;
+    private int nowProgress;
     private Timer timer;
 
 
@@ -50,6 +53,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         initView();
         initListener();
         loadData();
+        updateView();
         initProgress();
 
     }
@@ -93,7 +97,18 @@ public class StoreDetailActivity extends AppCompatActivity {
     }
 
     private void updateView() {
+        mTvMarket.setText("鞋服专送080901期");
+        mTvWeightRange.setText("1.5~5kg");
+        mTvMinNum.setText(Html.fromHtml(getString(R.string.min_number, 30)));
+        mTvMinPrice.setText(Html.fromHtml(getString(R.string.price, 6, 1.5)));
+        nowProgress = 80;
+        mTvRemain.setText(Html.fromHtml(getString(R.string.remaining, 7)));
+        mTvEndTime.setText(Html.fromHtml(getString(R.string.end_time, "8月9日")));
+        mTvParticipate.setText(Html.fromHtml(getString(R.string.participate, 15)));
 
+        Glide.with(this)
+                .load("http://inthecheesefactory.com/uploads/source/nestedfragment/fragments.png")
+                .into(mIvStorePic);
     }
 
     private void nextStep() {
@@ -102,15 +117,15 @@ public class StoreDetailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void initProgress(){
+    private void initProgress() {
         progress = 0;
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 mIvProgress.setProgress(progress);
-                progress ++;
-                if (progress > 100) {
+                progress++;
+                if (progress > nowProgress) {
                     timer.cancel();
                 }
             }
