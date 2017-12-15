@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sf.marathon.pentakill.server.controller.dto.resp.GroupResp;
 import com.sf.marathon.pentakill.server.domain.Group;
 import com.sf.marathon.pentakill.server.domain.Market;
 import com.sf.marathon.pentakill.server.service.IGroupService;
 import com.sf.marathon.pentakill.server.service.IMarketService;
 import com.sf.marathon.pentakill.server.service.ISignUpService;
+import com.sf.marathon.pentakill.server.util.BeanUtil;
 
 @RestController
 @RequestMapping("/group")
@@ -32,8 +34,12 @@ public class GroupController extends BaseController{
 	}
 	
 	@GetMapping("/getOne/{id}")
-	public RestResponse<Group> getOne(@PathVariable(value = "id") String id){
-		return handle(response -> response.setResult(groupService.getOne(Long.valueOf(id))));
+	public RestResponse<GroupResp> getOne(@PathVariable(value = "id") String id){
+		return handle(response -> {
+			GroupResp result = BeanUtil.copyProperties(groupService.getOne(Long.valueOf(id)), GroupResp.class);
+			result.setSignedNum(signUpService.findCount(Long.valueOf(id)));
+			response.setResult(result);
+			});
 	}
 	
 	@GetMapping("/getOne/market/{id}")
