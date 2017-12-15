@@ -27,9 +27,9 @@ public class QrCodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qrcode_for_wechat);
         imageQrCode = findViewById(R.id.image_qrcode);
         Intent intent = getIntent();
-        String id = intent.getStringExtra("id");
-        String market_id = intent.getStringExtra("market_id");
-        String url = Constants.HOST+"";
+        long id = intent.getLongExtra("id", 0);
+        long market_id = intent.getLongExtra("market_id", 0);
+        String url = Constants.HOST + "/qc/" + id + "/" + market_id;
         imageQrCode.setImageBitmap(QrCodeUtil.createQRCodeWithLogo6(url, 500, drawableToBitmap(getResources().getDrawable(R.mipmap.qrcode_logo))));
 
     }
