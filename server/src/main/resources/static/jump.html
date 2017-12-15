@@ -7,13 +7,12 @@
 <body>
     <h3>右上角外部浏览器打开</h3>
 </body>
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
     window.onload = function () {
         newLocation();
     }
     function newLocation(){
-        window.open("cby://oarage.sf.com/openwith?store_id=" + id + "&market_id=" + marketId")
+        window.open("cby://oarage.sf.com/openwith?store_id=${id1}&market_id=${id2}")
     }
 </script>
 </html>

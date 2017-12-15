@@ -1,5 +1,6 @@
 package com.sf.oarage.pentakillclient.qrcode;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -9,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
+import com.sf.oarage.pentakillclient.Constants;
 import com.sf.oarage.pentakillclient.R;
 import com.sf.oarage.pentakillclient.utils.QrCodeUtil;
 
@@ -24,7 +26,12 @@ public class QrCodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode_for_wechat);
         imageQrCode = findViewById(R.id.image_qrcode);
-        imageQrCode.setImageBitmap(QrCodeUtil.createQRCodeWithLogo6("http://www.jianshu.com/users/4a4eb4feee62/latest_articles", 500, drawableToBitmap(getResources().getDrawable(R.mipmap.qrcode_logo))));
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+        String market_id = intent.getStringExtra("market_id");
+        String url = Constants.HOST+"";
+        imageQrCode.setImageBitmap(QrCodeUtil.createQRCodeWithLogo6(url, 500, drawableToBitmap(getResources().getDrawable(R.mipmap.qrcode_logo))));
+
     }
 
     public static Bitmap drawableToBitmap(Drawable drawable) {

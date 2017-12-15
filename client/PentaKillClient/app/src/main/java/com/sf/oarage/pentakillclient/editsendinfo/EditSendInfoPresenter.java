@@ -34,10 +34,10 @@ public class EditSendInfoPresenter implements EditSendInfoContract.Presenter {
 
     @Override
     public void doSignUp() {
-        editSendInfoModel.doSign("", new Callback() {
+        editSendInfoModel.doSign(getDataOfDetail(), new Callback() {
             @Override
             public void onSuccess(String data) {
-                Log.d("success", data);
+                mView.jumpQr();
             }
 
             @Override
@@ -78,6 +78,14 @@ public class EditSendInfoPresenter implements EditSendInfoContract.Presenter {
             mView.showToast("手机号码不正确");
             return false;
         }
+        if (StringUtils.isEmpty(mView.getSenderCount())){
+            mView.showToast("未填写寄件数量");
+            return false;
+        }
+        if (!StringUtils.isEmpty(mView.getSenderCount()) && StringUtils.toInt(mView.getSenderCount(),0)<20){
+            mView.showToast("寄件数量至少20件");
+            return false;
+        }
         if (StringUtils.isEmpty(mView.getSenderWeight())) {
             mView.showToast("未填写重量");
             return false;
@@ -95,8 +103,7 @@ public class EditSendInfoPresenter implements EditSendInfoContract.Presenter {
         signUpBean.setNumPerDay(StringUtils.toInt(mView.getSenderCount(),0));
         signUpBean.setUserName(mView.getSenderName());
         Gson gson = new Gson();
-        String jsonStr = gson.toJson(signUpBean);
-        return jsonStr;
+        return gson.toJson(signUpBean);
     }
 
 

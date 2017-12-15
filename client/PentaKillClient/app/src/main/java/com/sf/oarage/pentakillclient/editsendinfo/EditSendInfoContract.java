@@ -10,20 +10,33 @@ import com.sf.oarage.pentakillclient.base.BaseView;
 public interface EditSendInfoContract {
     interface View extends BaseView<Presenter> {
         String getAddress();
+
         String getAddressDetail();
+
         String getSenderName();
+
         String getSenderPhone();
+
         String getSenderCount();
+
         String getSenderWeight();
+
         void showToast(String message);
+
         void showWechatDialog();
+
+        void jumpQr();
     }
 
     interface Presenter extends BasePresenter<EditSendInfoContract.View> {
         void setGroupId(Long str);
+
         void doSignUp();
+
         void signOfStore();
+
         boolean checkRequiredFill();
+
         String getDataOfDetail();
     }
 }

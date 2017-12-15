@@ -1,8 +1,10 @@
 package com.sf.oarage.pentakillclient.editsendinfo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sf.oarage.pentakillclient.R;
+import com.sf.oarage.pentakillclient.qrcode.QrCodeActivity;
 import com.sf.oarage.pentakillclient.utils.StringUtils;
 
 import chihane.jdaddressselector.BottomDialog;
@@ -19,7 +22,6 @@ import chihane.jdaddressselector.model.City;
 import chihane.jdaddressselector.model.County;
 import chihane.jdaddressselector.model.Province;
 import chihane.jdaddressselector.model.Street;
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by liushihan on 2017/12/15.
@@ -34,6 +36,8 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
     EditText editWeight;
     Button btnSign;
     EditSendInfoContract.Presenter mPresenter;
+    private long groupId;
+    private long marketId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,17 +46,25 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
         textAddressOfPicker = findViewById(R.id.textAddress);
         editAddressDetail = findViewById(R.id.textAddressDetail);
         editName = findViewById(R.id.edit_sender_name);
-        editPhone = findViewById(R.id.edit_send_count);
+        editPhone = findViewById(R.id.edit_send_phone);
         editSendCount = findViewById(R.id.edit_send_count);
         editWeight = findViewById(R.id.edit_single_weight);
         btnSign = findViewById(R.id.btn_sign);
         setListener();
+        EditSendInfoPresenter editSendInfoPresenter = new EditSendInfoPresenter();
+        editSendInfoPresenter.start(this);
         initData();
     }
 
     private void initData() {
         Intent intent = getIntent();
-        mPresenter.setGroupId("");
+        Bundle extras = intent.getExtras();
+        if (extras!=null) {
+            groupId = extras.getLong("groupId");
+            marketId = extras.getLong("marketId");
+            mPresenter.setGroupId(groupId);
+        }
+
     }
 
     private void setListener() {
@@ -64,12 +76,26 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
                     @Override
                     public void onAddressSelected(Province province, City city, County county, Street street) {
                         //判空
-
+                        String address = null;
+                        if (province != null) {
+                            address = province.name;
+                        }
+                        if (city != null) {
+                            address += city.name;
+                        }
+                        if (county != null) {
+                            address += county.name;
+                        }
+                        if (street != null) {
+                            address += street.name;
+                        }
+                        textAddressOfPicker.setText(address);
                     }
                 });
                 dialog.show();
             }
         });
+        btnSign.setOnClickListener(this);
     }
 
     @Override
@@ -132,18 +158,24 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
 
     @Override
     public void showWechatDialog() {
-        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("报名成功")
-                .setContentText("转发给更多的朋友或生成图片分享至朋友圈，即可加快集货进度~")
-                .setConfirmText("发送微信好友")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+        new AlertDialog.Builder(this)
+                .setTitle("报名成功")
+                .setMessage("转发给更多的朋友或生成图片分享至朋友圈，即可加快集货进度~")
+                .setPositiveButton("发送微信好友", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.dismissWithAnimation();
+                    public void onClick(DialogInterface dialogInterface, int i) {
                         mPresenter.doSignUp();
                     }
                 })
-                .show();
+                .setNegativeButton("取消", null).show();
+    }
+
+    @Override
+    public void jumpQr() {
+        Intent intent = new Intent(this, QrCodeActivity.class);
+        intent.putExtra("id",groupId);
+        intent.putExtra("market_id",marketId);
+        startActivity(intent);
     }
 
     @Override

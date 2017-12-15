@@ -52,7 +52,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
 
     //进度百分比
     private int progress;
-    private int nowProgress;
+    private Double nowProgress;
     private Timer timer;
 
     private StoreDetailContract.StoreDetailPresenter mPresenter;
@@ -137,7 +137,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         mRequirement.setText(Html.fromHtml(marketBean.getUserRequire()));
         mTvWeightRange.setText(String.format(getString(R.string.weight_range), marketBean.getMinWeight(), marketBean.getMaxWeight()));
         mTvRemain.setText(Html.fromHtml(getString(R.string.remaining, marketBean.getLimitNum() - mStoreDetail.getSignedNum())));
-        nowProgress = mStoreDetail.getSignedNum() / marketBean.getLimitNum() * 100;
+        nowProgress = Double.valueOf(mStoreDetail.getSignedNum() / marketBean.getLimitNum()) * 100;
         initProgress();
     }
 
@@ -145,10 +145,8 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         Intent intent = new Intent();
         intent.setClass(StoreDetailActivity.this, EditSendInfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("period", mStoreDetail.getPeriodNum());
-        bundle.putDouble("minWeight", mMarketBean.getMinWeight());
-        bundle.putDouble("maxWeight", mMarketBean.getMaxWeight());
-        bundle.putInt("minBagNum", mStoreDetail.getMinBagNum());
+        bundle.putLong("groupId", Long.parseLong(storeId));
+        bundle.putLong("marketId", Long.parseLong(marketId));
         startActivity(intent);
     }
 
