@@ -57,15 +57,6 @@ public class StoreListActivity extends AppCompatActivity implements StoreListCon
         mStoreListAdapter = new StoreListAdapter(this);
         mStoreListView.setLayoutManager(new LinearLayoutManager(this));
         mStoreListView.setAdapter(mStoreListAdapter);
-        //test
-        TextView viewById = findViewById(R.id.tv_click_next);
-        viewById.setMovementMethod(LinkMovementMethod.getInstance());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            viewById.setText(Html.fromHtml("<a href=\"cby://oarage.sf.com/openwith?store_id=091318\">启动应用程序</a> ", Html.FROM_HTML_MODE_LEGACY));
-        } else {
-            viewById.setText(Html.fromHtml("<a href=\"cby://oarage.sf.com/openwith?store_id=091318\">启动应用程序</a> "));
-        }
-
     }
 
     @Override

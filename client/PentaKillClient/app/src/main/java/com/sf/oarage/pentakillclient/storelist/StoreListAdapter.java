@@ -1,6 +1,8 @@
 package com.sf.oarage.pentakillclient.storelist;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +36,7 @@ public class StoreListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        StoreListBean storeListBean = mStoreListBeans.get(position);
+        final StoreListBean storeListBean = mStoreListBeans.get(position);
         if (holder instanceof StoreListCommListHolder) {
 
             ((StoreListCommListHolder) holder).mPurChaseName.setText(String.valueOf(storeListBean.getPeriodNum()));
@@ -42,7 +44,11 @@ public class StoreListAdapter extends RecyclerView.Adapter {
             ((StoreListCommListHolder) holder).mPurChaseJoin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(mContext, "进去", Toast.LENGTH_SHORT).show();
+                    int id = storeListBean.getId();
+                    int marketId = storeListBean.getMarketId();
+                    Uri uri = Uri.parse("cby://oarage.sf.com/openwith?store_id=" + id + "&market_id=" + marketId);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    mContext.startActivity(intent);
                 }
             });
         }
@@ -58,6 +64,7 @@ public class StoreListAdapter extends RecyclerView.Adapter {
 
     public void setData(List<StoreListBean> storeListBean) {
         mStoreListBeans = storeListBean;
+        notifyDataSetChanged();
     }
 
     private static class StoreListCommListHolder extends RecyclerView.ViewHolder {
