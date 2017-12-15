@@ -1,8 +1,10 @@
 package com.sf.oarage.pentakillclient.editsendinfo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -42,17 +44,28 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
         textAddressOfPicker = findViewById(R.id.textAddress);
         editAddressDetail = findViewById(R.id.textAddressDetail);
         editName = findViewById(R.id.edit_sender_name);
-        editPhone = findViewById(R.id.edit_send_count);
+        editPhone = findViewById(R.id.edit_send_phone);
         editSendCount = findViewById(R.id.edit_send_count);
         editWeight = findViewById(R.id.edit_single_weight);
         btnSign = findViewById(R.id.btn_sign);
         setListener();
+        EditSendInfoPresenter editSendInfoPresenter = new EditSendInfoPresenter();
+        editSendInfoPresenter.start(this);
         initData();
     }
 
     private void initData() {
         Intent intent = getIntent();
-        mPresenter.setGroupId("");
+        Bundle extras = intent.getExtras();
+        if (extras!=null) {
+            String period = extras.getString("period");
+            double minWeight = extras.getDouble("minWeight");
+            double maxWeight = extras.getDouble("maxWeight");
+            int minBagNum = extras.getInt("minBagNum");
+            long groupId = extras.getLong("groupId");
+            mPresenter.setGroupId(groupId);
+        }
+
     }
 
     private void setListener() {
@@ -64,12 +77,26 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
                     @Override
                     public void onAddressSelected(Province province, City city, County county, Street street) {
                         //判空
-
+                        String address = null;
+                        if (province != null) {
+                            address = province.name;
+                        }
+                        if (city != null) {
+                            address += city.name;
+                        }
+                        if (county != null) {
+                            address += county.name;
+                        }
+                        if (street != null) {
+                            address += street.name;
+                        }
+                        textAddressOfPicker.setText(address);
                     }
                 });
                 dialog.show();
             }
         });
+        btnSign.setOnClickListener(this);
     }
 
     @Override
@@ -139,11 +166,20 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.dismissWithAnimation();
-                        mPresenter.doSignUp();
                     }
                 })
                 .show();
+
+        new AlertDialog.Builder(this)
+                .setTitle("报名成功")
+                .setMessage("转发给更多的朋友或生成图片分享至朋友圈，即可加快集货进度~")
+                .setPositiveButton("发送微信好友", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mPresenter.doSignUp();
+                    }
+                })
+                .setNegativeButton("取消", null).show();
     }
 
     @Override

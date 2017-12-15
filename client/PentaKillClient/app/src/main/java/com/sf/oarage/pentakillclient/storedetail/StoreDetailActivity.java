@@ -20,6 +20,8 @@ import com.sf.oarage.pentakillclient.editsendinfo.EditSendInfoActivity;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.MarketBean;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailBean;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -68,7 +70,6 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         initView();
         initListener();
         loadData();
-        initProgress();
     }
 
     /**
@@ -122,18 +123,22 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         mTvMarket.setText(storeDetailBean.getPeriodNum());
         mTvMinNum.setText(Html.fromHtml(getString(R.string.min_number, storeDetailBean.getMinBagNum())));
         mTvMinPrice.setText(Html.fromHtml(getString(R.string.price, storeDetailBean.getMinWeight(), 1)));
-        mTvEndTime.setText(Html.fromHtml(getString(R.string.end_time, storeDetailBean.getEndTime())));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+        long lcc = Long.valueOf(storeDetailBean.getEndTime());
+        String times = simpleDateFormat.format(new Date(lcc));
+        mTvEndTime.setText(Html.fromHtml(getString(R.string.end_time, times)));
         Glide.with(this)
-                .load(Constants.HOST + "/" + storeDetailBean.getPicture())
+                .load(Constants.HOST + "/"+storeDetailBean.getPicture())
                 .into(mIvStorePic);
-
         mTvParticipate.setText(Html.fromHtml(getString(R.string.participate, mStoreDetail.getSignedNum())));
     }
 
     private void updateMarketView(MarketBean marketBean) {
+        mRequirement.setText(Html.fromHtml(marketBean.getUserRequire()));
         mTvWeightRange.setText(String.format(getString(R.string.weight_range), marketBean.getMinWeight(), marketBean.getMaxWeight()));
         mTvRemain.setText(Html.fromHtml(getString(R.string.remaining, marketBean.getLimitNum() - mStoreDetail.getSignedNum())));
         nowProgress = mStoreDetail.getSignedNum() / marketBean.getLimitNum() * 100;
+        initProgress();
     }
 
     private void nextStep() {
@@ -141,6 +146,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         intent.setClass(StoreDetailActivity.this, EditSendInfoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("period", mStoreDetail.getPeriodNum());
+        bundle.putLong("groupId", Long.parseLong(storeId));
         bundle.putDouble("minWeight", mMarketBean.getMinWeight());
         bundle.putDouble("maxWeight", mMarketBean.getMaxWeight());
         bundle.putInt("minBagNum", mStoreDetail.getMinBagNum());

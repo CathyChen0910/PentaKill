@@ -34,7 +34,7 @@ public class EditSendInfoPresenter implements EditSendInfoContract.Presenter {
 
     @Override
     public void doSignUp() {
-        editSendInfoModel.doSign("", new Callback() {
+        editSendInfoModel.doSign(getDataOfDetail(), new Callback() {
             @Override
             public void onSuccess(String data) {
                 Log.d("success", data);
@@ -95,8 +95,7 @@ public class EditSendInfoPresenter implements EditSendInfoContract.Presenter {
         signUpBean.setNumPerDay(StringUtils.toInt(mView.getSenderCount(),0));
         signUpBean.setUserName(mView.getSenderName());
         Gson gson = new Gson();
-        String jsonStr = gson.toJson(signUpBean);
-        return jsonStr;
+        return gson.toJson(signUpBean);
     }
 
 
