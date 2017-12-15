@@ -1,49 +1,27 @@
-package com.sf.marathon.pentakill.server.domain;
+package com.sf.marathon.pentakill.server.controller.dto.req;
 
-import java.util.Date;
+import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class SignUpReq implements Serializable {
 
-@Entity
-@Table(name = "shipping_group")
-public class SignUp {
-	@Id
-	@GeneratedValue
-	@Column(name = "SIGN_UP_ID")
-	private Long id;
+	private static final long serialVersionUID = -5114187785032952299L;
 
-	@Column(name = "SHIPPING_GROUP_ID")
+	// groupId
 	private Long groupId;
-
-	@Column(name = "USER_NAME")
+	// 姓名
 	private String userName;
 
-	@Column(name = "USER_CELLPHONE")
+	// 手机号码
 	private String userCellphone;
 
-	@Column(name = "USER_ADDRESS")
+	// 地址
 	private String userAddress;
 
-	@Column(name = "ITEM_NUMBER_PER_DAY")
+	// 每日寄件量
 	private Integer numPerDay;
 
-	@Column(name = "ITEM_WEIGHT_PER_DAY")
+	// 平均寄件重量
 	private Double weightPerDay;
-
-	@Column(name = "CREATE_TIME")
-	private Date createTime;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getUserName() {
 		return userName;
@@ -83,14 +61,6 @@ public class SignUp {
 
 	public void setWeightPerDay(Double weightPerDay) {
 		this.weightPerDay = weightPerDay;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
 	}
 
 	public Long getGroupId() {
