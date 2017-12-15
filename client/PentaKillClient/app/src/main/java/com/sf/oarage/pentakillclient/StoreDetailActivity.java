@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.sf.oarage.pentakillclient.editsendinfo.EditSendInfoActivity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class StoreDetailActivity extends AppCompatActivity {
 
     //集货团
@@ -35,6 +38,10 @@ public class StoreDetailActivity extends AppCompatActivity {
     //立即参与
     private Button mBtnJoin;
 
+    //进度百分比
+    private int progress;
+    private Timer timer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         initView();
         initListener();
         loadData();
+        initProgress();
 
     }
 
@@ -92,6 +100,22 @@ public class StoreDetailActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(StoreDetailActivity.this, EditSendInfoActivity.class);
         startActivity(intent);
+    }
+
+    private void initProgress(){
+        progress = 0;
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                mIvProgress.setProgress(progress);
+                progress ++;
+                if (progress > 100) {
+                    timer.cancel();
+                }
+            }
+        }, 0, 30);
+
     }
 
 
