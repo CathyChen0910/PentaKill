@@ -20,6 +20,11 @@ public interface Constants {
          * 获取市场数据
          */
         String MARKET_DATA ="/group/getOne/market";
+
+        /**
+         * 集货报名
+         */
+        String DO_SIGN = "/signUp";
     }
 
 }

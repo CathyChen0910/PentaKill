@@ -16,10 +16,14 @@ public interface EditSendInfoContract {
         String getSenderCount();
         String getSenderWeight();
         void showToast(String message);
+        void showWechatDialog();
     }
 
     interface Presenter extends BasePresenter<EditSendInfoContract.View> {
+        void setGroupId(Long str);
+        void doSignUp();
         void signOfStore();
         boolean checkRequiredFill();
+        String getDataOfDetail();
     }
 }
