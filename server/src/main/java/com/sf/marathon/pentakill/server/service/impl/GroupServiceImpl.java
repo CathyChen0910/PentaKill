@@ -9,9 +9,10 @@ import org.springframework.stereotype.Component;
 import com.sf.marathon.pentakill.server.dao.IGroupDao;
 import com.sf.marathon.pentakill.server.domain.Group;
 import com.sf.marathon.pentakill.server.service.IGroupService;
+import com.sf.marathon.pentakill.server.util.TimeUtil;
 
 @Component
-public class GroupServiceImpl extends TransactionalService implements IGroupService{
+public class GroupServiceImpl extends TransactionalService implements IGroupService {
 	@Autowired
 	private IGroupDao groupDao;
 
@@ -21,10 +22,16 @@ public class GroupServiceImpl extends TransactionalService implements IGroupServ
 	}
 
 	@Override
-	public List<Group> get(String marketId, Date date) {
-		Group group = new Group();
-		group.setMarketId(marketId);
-		return null;
+	public List<Group> verify(String marketId, Date date) {
+		return groupDao.getBySql(marketId, TimeUtil.now());
+	}
+
+	@Override
+	public void generate(String marketId) {
+		List<Group> list = groupDao.getBySql(marketId, TimeUtil.now());		
+		if(list.isEmpty()){
+			Group group = list.get(0);
+		}
 	}
 
 }
