@@ -24,6 +24,8 @@ public interface EditSendInfoContract {
         void showToast(String message);
 
         void showWechatDialog();
+
+        void jumpQr();
     }
 
     interface Presenter extends BasePresenter<EditSendInfoContract.View> {
