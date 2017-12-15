@@ -39,6 +39,8 @@ public class RoundedRectProgressBar extends View {
                 case R.styleable.RoundedRectProgressBar_textColor:
                     textColor = a.getColor(attr, Color.WHITE);
                     break;
+                default:
+                    break;
 
             }
 

@@ -2,9 +2,6 @@ package com.sf.oarage.pentakillclient.storedetail;
 
 import com.sf.oarage.pentakillclient.base.BasePresenter;
 import com.sf.oarage.pentakillclient.base.BaseView;
-import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailBean;
-
-import java.util.List;
 
 /**
  * Created by cathy chen on 2017/12/15.
