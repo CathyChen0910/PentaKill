@@ -28,6 +28,7 @@
                 <data android:scheme="cby" android:host="oarage.sf.com" android:pathPrefix="/openwith"/>
             </intent-filter>
         </activity>
+        <activity android:name=".editsendinfo.EditSendInfoActivity"/>
     </application>
 
 </manifest>
