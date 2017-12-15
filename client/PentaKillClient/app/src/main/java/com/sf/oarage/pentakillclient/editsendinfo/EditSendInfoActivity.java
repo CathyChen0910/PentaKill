@@ -164,7 +164,7 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
                 .setPositiveButton("发送微信好友", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        mPresenter.doSignUp();
+                        jumpQr();
                     }
                 })
                 .setNegativeButton("取消", null).show();
