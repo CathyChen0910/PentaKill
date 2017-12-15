@@ -21,7 +21,6 @@ import chihane.jdaddressselector.model.City;
 import chihane.jdaddressselector.model.County;
 import chihane.jdaddressselector.model.Province;
 import chihane.jdaddressselector.model.Street;
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by liushihan on 2017/12/15.
@@ -159,17 +158,6 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
 
     @Override
     public void showWechatDialog() {
-        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("报名成功")
-                .setContentText("转发给更多的朋友或生成图片分享至朋友圈，即可加快集货进度~")
-                .setConfirmText("发送微信好友")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                    }
-                })
-                .show();
-
         new AlertDialog.Builder(this)
                 .setTitle("报名成功")
                 .setMessage("转发给更多的朋友或生成图片分享至朋友圈，即可加快集货进度~")
