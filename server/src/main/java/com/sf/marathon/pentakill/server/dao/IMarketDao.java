@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.sf.marathon.pentakill.server.domain.Market;
 
-public interface IMarketDao extends JpaRepository<Market, Long>{
+public interface IMarketDao extends JpaRepository<Market, String>{
 
 }
