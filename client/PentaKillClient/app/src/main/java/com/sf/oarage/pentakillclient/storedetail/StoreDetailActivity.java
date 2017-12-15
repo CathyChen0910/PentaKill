@@ -147,6 +147,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         Bundle bundle = new Bundle();
         bundle.putLong("groupId", Long.parseLong(storeId));
         bundle.putLong("marketId", Long.parseLong(marketId));
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
