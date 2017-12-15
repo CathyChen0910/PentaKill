@@ -12,8 +12,6 @@ import com.sf.marathon.pentakill.server.service.IGroupService;
 @Component
 public class GenerateGroupTask {
 
-	private static final String PREFIX = "_generategroup_";
-
 	@Autowired
 	private IGroupService groupService;
 
