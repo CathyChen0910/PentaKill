@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">PentaKillClient</string>
-    <string name="min_number">每日最低需寄<![CDATA[<font color=\'#888888\'>%d</font>]]>件</string>
-    <string name="price">低至￥<![CDATA[<font size=\'24dp\'>%d</font>]]>\n %dkg</string>
-    <string name="end_time">截止日期：<![CDATA[<font color=\'#FF6532\'>%d</font>]]></string>
+    <string name="min_number">每日最低需寄<![CDATA[<font color=\'#FF6532\'>%d</font>]]>件</string>
+    <string name="price">低至￥<![CDATA[<b><font size=\"2\">%1d</font></b><br>]]>\n%.1fkg</string>
+    <string name="end_time">截止日期：<![CDATA[<font color=\'#FF6532\'>%s</font>]]></string>
     <string name="requirement">使用要求</string>
     <string name="recent">最近参与</string>
-    <string name="participate">已有<![CDATA[<font color=\'#888888\'>%d</font>]]>人参团</string>
+    <string name="participate">已有<![CDATA[<font color=\'#FF6532\'>%d</font>]]>人参团</string>
     <string name="join_now">立即参与</string>
-    <string name="remaining">还差<![CDATA[<font color=\'#888888\'>%d</font>]]>人即可成团</string>
+    <string name="remaining">还差<![CDATA[<font color=\'#FF6532\'>%d</font>]]>人即可成团</string>
 </resources>

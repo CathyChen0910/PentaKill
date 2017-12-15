@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
-        android:text="鞋服专送080901期"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/font0" />
 
@@ -31,7 +30,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="1.5~5kg"
                 android:textColor="@color/colorContent"
                 android:textSize="@dimen/font4" />
 
@@ -44,6 +42,17 @@
                 android:textColor="@color/colorContent"
                 android:textSize="@dimen/font4" />
         </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_store_pic"
+            android:layout_width="match_parent"
+            android:layout_height="154dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/ll_top_show"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="44dp" />
+
 
         <TextView
             android:id="@+id/tv_min_price"
@@ -58,22 +67,15 @@
             android:text="@string/price"
             android:textColor="@color/colorMainBackGround"
             android:textSize="@dimen/font8" />
-
-        <ImageView
-            android:id="@+id/iv_store_pic"
-            android:layout_width="match_parent"
-            android:layout_height="154dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/ll_top_show"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="44dp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <com.sf.oarage.pentakillclient.RoundedRectProgressBar
@@ -87,29 +89,37 @@
 
         <TextView
             android:id="@+id/tv_remaining"
-            android:layout_width="80dp"
-            android:singleLine="true"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:singleLine="true"
             android:text="@string/remaining" />
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_end_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/end_time"
         android:textColor="@color/colorContent"
         android:textSize="@dimen/font4" />
 
+    <include layout="@layout/include_divider_line" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingEnd="24dp"
+        android:paddingStart="24dp">
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -123,33 +133,38 @@
         <TextView
             android:id="@+id/tv_requirement"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
             android:text="后台传递过来的使用要求" />
 
+
     </LinearLayout>
+
+    <include layout="@layout/include_divider_line" />
 
     <TextView
         android:id="@+id/tv_recent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:textSize="@dimen/font4"
+        android:layout_marginTop="8dp"
+        android:text="@string/recent"
         android:textColor="@color/colorContent"
-        android:text="@string/recent" />
+        android:textSize="@dimen/font4" />
 
     <TextView
         android:id="@+id/tv_participate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:textSize="@dimen/font4"
-        android:textColor="@color/colorContent"
         android:gravity="right"
-        android:text="@string/participate" />
+        android:text="@string/participate"
+        android:textColor="@color/colorContent"
+        android:textSize="@dimen/font4" />
 
     <Button
-        style="@style/commonButton"
         android:id="@+id/btn_join"
+        style="@style/commonButton"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_gravity="bottom"
