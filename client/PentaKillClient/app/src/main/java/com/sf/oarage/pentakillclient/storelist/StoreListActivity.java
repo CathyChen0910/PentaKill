@@ -24,11 +24,12 @@ import com.sf.oarage.pentakillclient.R;
  * Created by Spawn on 2017/12/15.
  */
 
-public class StoreListActivity extends AppCompatActivity {
+public class StoreListActivity extends AppCompatActivity implements StoreListContract.StoreListView {
 
 
     private RecyclerView mStoreListView;
     private StoreListAdapter mStoreListAdapter;
+    private StoreListContract.StoreListPresenter mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class StoreListActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         initViews();
+        StoreListContract.StoreListPresenter presenter = new StoreListPresneterImpl();
+        presenter.start();
     }
 
     private void initViews() {
@@ -56,5 +59,10 @@ public class StoreListActivity extends AppCompatActivity {
             viewById.setText(Html.fromHtml("<a href=\"cby://oarage.sf.com/openwith?storeId=091318\">启动应用程序</a> "));
         }
 
+    }
+
+    @Override
+    public void setPresenter(StoreListContract.StoreListPresenter presenter) {
+        this.mPresenter = presenter;
     }
 }
