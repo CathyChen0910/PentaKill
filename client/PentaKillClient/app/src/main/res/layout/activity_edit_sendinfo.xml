@@ -9,6 +9,7 @@
         android:id="@+id/layoutSendInfoAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
@@ -46,28 +47,40 @@
 
             <TextView
                 android:id="@+id/textAddress"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
                 android:maxLines="1"
                 android:text="广东省深圳市"
-                android:textAlignment="viewEnd"
                 android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:src="@mipmap/chevron" />
         </LinearLayout>
 
         <include layout="@layout/include_divider_line" />
 
-        <TextView
+        <EditText
             android:id="@+id/textAddressDetail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:gravity="center_vertical"
             android:hint="请填写详细地址，不少于5个字"
+            android:maxLines="3"
             android:textSize="20dp" />
+
+        <include layout="@layout/include_divider_line" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -84,10 +97,63 @@
                 android:textSize="20dp" />
         </LinearLayout>
 
-        <TextView
+        <EditText
+            android:id="@+id/edit_sender_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:hint="请填写寄件人姓名"
+            android:textSize="20dp" />
+
+        <include layout="@layout/include_divider_line" />
+
+        <EditText
+            android:id="@+id/edit_send_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:hint="请填写寄件人电话" />
+
+        <include layout="@layout/include_divider_line" />
+
+        <EditText
+            android:id="@+id/edit_send_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:hint="请填写寄件数量（至少20件）" />
+
+        <EditText
+            android:id="@+id/edit_single_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:hint="请选择单件平均重量" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorButtonUnder"
+            android:text="报名集货"
+            android:textColor="@color/colorMainBackGround" />
     </LinearLayout>
 
 </LinearLayout>
