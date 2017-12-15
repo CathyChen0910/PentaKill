@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sf.oarage.pentakillclient.R;
+import com.sf.oarage.pentakillclient.qrcode.QrCodeActivity;
 import com.sf.oarage.pentakillclient.utils.StringUtils;
 
 import chihane.jdaddressselector.BottomDialog;
@@ -35,6 +36,8 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
     EditText editWeight;
     Button btnSign;
     EditSendInfoContract.Presenter mPresenter;
+    private long groupId;
+    private long marketId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,11 +60,8 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         if (extras!=null) {
-            String period = extras.getString("period");
-            double minWeight = extras.getDouble("minWeight");
-            double maxWeight = extras.getDouble("maxWeight");
-            int minBagNum = extras.getInt("minBagNum");
-            long groupId = extras.getLong("groupId");
+            groupId = extras.getLong("groupId");
+            marketId = extras.getLong("marketId");
             mPresenter.setGroupId(groupId);
         }
 
@@ -168,6 +168,14 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
                     }
                 })
                 .setNegativeButton("取消", null).show();
+    }
+
+    @Override
+    public void jumpQr() {
+        Intent intent = new Intent(this, QrCodeActivity.class);
+        intent.putExtra("id",groupId);
+        intent.putExtra("market_id",marketId);
+        startActivity(intent);
     }
 
     @Override

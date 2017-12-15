@@ -37,7 +37,7 @@ public class EditSendInfoPresenter implements EditSendInfoContract.Presenter {
         editSendInfoModel.doSign(getDataOfDetail(), new Callback() {
             @Override
             public void onSuccess(String data) {
-                Log.d("success", data);
+                mView.jumpQr();
             }
 
             @Override
