@@ -38,6 +38,10 @@ public class SignUpServiceImpl extends TransactionalService implements ISignUpSe
 		Group group = groupService.getOne(groupId);
 		Market market = marketService.getById(group.getMarketId());
 		int limitNum = market.getLimitNum();
+
+		if (group.getEndTime().before(TimeUtil.now())) {
+			return false;
+		}
 		Integer haveSignUpNum = findCount(groupId);
 		if (haveSignUpNum >= limitNum) {
 			return false;
