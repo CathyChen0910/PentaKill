@@ -1,10 +1,14 @@
 package com.sf.oarage.pentakillclient;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.sf.oarage.pentakillclient.editsendinfo.EditSendInfoActivity;
 
 public class StoreDetailActivity extends AppCompatActivity {
 
@@ -37,6 +41,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_detail);
         initView();
+        initListener();
         loadData();
 
     }
@@ -59,9 +64,35 @@ public class StoreDetailActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * 初始化点击事件
      */
-    private void loadData() {
+    private void initListener() {
+        mBtnJoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextStep();
+            }
+        });
 
     }
+
+    /**
+     * 加载后台对应的集货团信息
+     */
+    private void loadData() {
+        //网络请求返回一个数据集
+
+    }
+
+    private void updateView() {
+
+    }
+
+    private void nextStep() {
+        Intent intent = new Intent();
+        intent.setClass(StoreDetailActivity.this, EditSendInfoActivity.class);
+        startActivity(intent);
+    }
+
+
 }

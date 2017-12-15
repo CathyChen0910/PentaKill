@@ -51,7 +51,7 @@ public class StoreListActivity extends AppCompatActivity {
         TextView viewById = findViewById(R.id.tv_click_next);
         viewById.setMovementMethod(LinkMovementMethod.getInstance());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            viewById.setText(Html.fromHtml("<a href=\"m\">启动应用程序</a> ", Html.FROM_HTML_MODE_LEGACY));
+            viewById.setText(Html.fromHtml("<a href=\"cby://oarage.sf.com/openwith?storeId=091318\">启动应用程序</a> ", Html.FROM_HTML_MODE_LEGACY));
         } else {
             viewById.setText(Html.fromHtml("<a href=\"cby://oarage.sf.com/openwith?storeId=091318\">启动应用程序</a> "));
         }
