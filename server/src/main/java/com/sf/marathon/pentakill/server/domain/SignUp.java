@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "shipping_group")
+@Table(name = "sign_up")
 public class SignUp {
 	@Id
 	@GeneratedValue
