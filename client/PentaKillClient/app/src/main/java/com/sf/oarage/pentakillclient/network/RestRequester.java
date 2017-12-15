@@ -25,7 +25,7 @@ public abstract class RestRequester extends Thread implements RestLife, Action {
     private Callback callback;
 
     public RestRequester(String url) {
-        mReqUrl = url;
+        mReqUrl = Constants.HOST + url;
     }
 
     @Override

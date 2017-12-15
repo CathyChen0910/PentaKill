@@ -8,7 +8,10 @@ import com.sf.oarage.pentakillclient.editsendinfo.data.remote.EditSendInfoModel;
 import com.sf.oarage.pentakillclient.editsendinfo.data.remote.EditSendInfoModelImpl;
 import com.sf.oarage.pentakillclient.editsendinfo.data.remote.SignUpBean;
 import com.sf.oarage.pentakillclient.network.Callback;
+import com.sf.oarage.pentakillclient.network.MainThreadCallback;
 import com.sf.oarage.pentakillclient.utils.StringUtils;
+
+import org.json.JSONException;
 
 /**
  * Created by liushihan on 2017/12/15.
@@ -31,25 +34,22 @@ public class EditSendInfoPresenter implements EditSendInfoContract.Presenter {
         this.GroupId = gid;
     }
 
-
-    @Override
-    public void doSignUp() {
-        editSendInfoModel.doSign(getDataOfDetail(), new Callback() {
-            @Override
-            public void onSuccess(String data) {
-                mView.jumpQr();
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                Log.d("error", t.getMessage());
-            }
-        });
-    }
-
     @Override
     public void signOfStore() {
-        mView.showWechatDialog();
+        mView.jumpQr();
+        editSendInfoModel.doSign(getDataOfDetail(), new MainThreadCallback() {
+
+            @Override
+            public void onMainThreadSuccess(String data) throws JSONException {
+
+            }
+
+            @Override
+            public void onMainThreadError(Throwable t) {
+                mView.showToast(t.getMessage());
+
+            }
+        });
     }
 
     @Override

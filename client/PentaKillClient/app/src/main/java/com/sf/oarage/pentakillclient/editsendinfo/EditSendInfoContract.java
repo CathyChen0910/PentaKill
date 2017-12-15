@@ -31,8 +31,6 @@ public interface EditSendInfoContract {
     interface Presenter extends BasePresenter<EditSendInfoContract.View> {
         void setGroupId(Long str);
 
-        void doSignUp();
-
         void signOfStore();
 
         boolean checkRequiredFill();

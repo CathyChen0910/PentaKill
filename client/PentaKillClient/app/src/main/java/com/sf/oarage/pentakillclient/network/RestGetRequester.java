@@ -17,7 +17,7 @@ import static com.sf.oarage.pentakillclient.Constants.HOST;
 public class RestGetRequester extends RestRequester {
 
     public RestGetRequester(String url) {
-        super(HOST + url);
+        super(url);
     }
 
     @Override

@@ -69,6 +69,12 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         setContentView(R.layout.activity_store_detail);
         initView();
         initListener();
+        //网络请求返回一个数据集
+        Uri uri = getIntent().getData();
+        if (null != uri) {
+            storeId = uri.getQueryParameter("store_id");
+            marketId = uri.getQueryParameter("market_id");
+        }
         loadData();
     }
 
@@ -107,16 +113,17 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
      * 加载后台对应的集货团信息
      */
     private void loadData() {
-        //网络请求返回一个数据集
-        Uri uri = getIntent().getData();
-        if (null != uri) {
-            storeId = uri.getQueryParameter("store_id");
-            marketId = uri.getQueryParameter("market_id");
-        }
+
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage(getString(R.string.loading));
         mProgressDialog.show();
         mPresenter.loadStoreDetail(storeId);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
     }
 
     private void updateStoreView(StoreDetailBean storeDetailBean) {
@@ -181,9 +188,7 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
 
     @Override
     public void onMarketDataSuccess(MarketBean marketBean) {
-        if (null != mProgressDialog && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-        }
+        mProgressDialog.dismiss();
         this.mMarketBean = marketBean;
         updateMarketView(marketBean);
     }

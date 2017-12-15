@@ -5,7 +5,7 @@ package com.sf.oarage.pentakillclient;
  */
 
 public interface Constants {
-    String HOST = "http://192.168.100.12:8080/pentaKill";
+    String HOST = "http://192.168.100.27:8080/pentaKill";
 
     interface Method {
         /**

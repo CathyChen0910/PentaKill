@@ -12,6 +12,6 @@ public class EditSendInfoModelImpl implements EditSendInfoModel{
     @Override
     public void doSign(String result, Callback callback) {
         RestPostRequester postRequester = new RestPostRequester(Constants.Method.DO_SIGN);
-        postRequester.execute("",callback);
+        postRequester.execute(result,callback);
     }
 }
