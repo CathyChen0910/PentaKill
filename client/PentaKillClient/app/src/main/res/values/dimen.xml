@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="font0">40px</item>
+    <item name="font1">37px</item>
+    <item name="font2">36px</item>
+    <item name="font3">34px</item>
+    <item name="font4">32px</item>
+    <item name="font5">30px</item>
+    <item name="font6">28px</item>
+    <item name="font7">26px</item>
+    <item name="font8">24px</item>
+</resources>
