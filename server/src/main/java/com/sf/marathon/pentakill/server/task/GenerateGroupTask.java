@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
 import com.sf.marathon.pentakill.server.service.IGroupService;
-import com.sf.marathon.pentakill.server.util.LockUtil;
 
 @Component
 public class GenerateGroupTask {
@@ -20,14 +19,8 @@ public class GenerateGroupTask {
 
 	@Async("mySimpleAsync")
 	public Future<Boolean> generate(String marketId) {
-		String key = PREFIX + marketId;
-		LockUtil.lock(key);
-		try {
-			groupService.generate(key);
-			return new AsyncResult<>(true);
-		} finally {
-			LockUtil.unLock(key);
-		}
+		groupService.generate(marketId);
+		return new AsyncResult<>(true);
 	}
 
 }
