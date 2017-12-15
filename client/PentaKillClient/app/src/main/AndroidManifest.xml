@@ -25,7 +25,7 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="cby" android:host="oarage.sf.com" android:pathPrefix="/openwith"/>
+                <data android:scheme="cby" android:host="oarage.sf.com" android:pathPrefix="/openwith"/>  ,,,,,,,,,,,,    mmmmmmmmmmmmmmmmmmmmmmmm
             </intent-filter>
         </activity>
         <activity android:name=".editsendinfo.EditSendInfoActivity"/>
