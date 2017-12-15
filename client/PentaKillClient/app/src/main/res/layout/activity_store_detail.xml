@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.sf.oarage.pentakillclient.storedetail.StoreDetailActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.sf.oarage.pentakillclient.storedetail.StoreDetailActivity">
 
     <TextView
         android:id="@+id/tv_market_id"
@@ -13,7 +13,7 @@
         android:layout_height="40dp"
         android:gravity="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/font0" />
+        android:textSize="@dimen/font0"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:textColor="@color/colorContent"
-                android:textSize="@dimen/font4" />
+                android:textSize="@dimen/font4"/>
 
             <TextView
                 android:id="@+id/tv_min_num"
@@ -40,7 +40,7 @@
                 android:layout_marginStart="24dp"
                 android:text="@string/min_number"
                 android:textColor="@color/colorContent"
-                android:textSize="@dimen/font4" />
+                android:textSize="@dimen/font4"/>
         </LinearLayout>
 
 
@@ -51,7 +51,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/ll_top_show"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="44dp" />
+            tools:layout_editor_absoluteY="44dp"/>
 
 
         <TextView
@@ -66,7 +66,7 @@
             android:gravity="center"
             android:text="@string/price"
             android:textColor="@color/colorMainBackGround"
-            android:textSize="@dimen/font8" />
+            android:textSize="@dimen/font8"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -85,7 +85,7 @@
             android:layout_weight="1"
             app:backColor="@color/colorBody1"
             app:barColor="@color/colorPrimary"
-            app:textColor="#FFFFFF" />
+            app:textColor="#FFFFFF"/>
 
         <TextView
             android:id="@+id/tv_remaining"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:singleLine="true"
-            android:text="@string/remaining" />
+            android:text="@string/remaining"/>
     </LinearLayout>
 
 
@@ -106,9 +106,9 @@
         android:layout_marginTop="8dp"
         android:text="@string/end_time"
         android:textColor="@color/colorContent"
-        android:textSize="@dimen/font4" />
+        android:textSize="@dimen/font4"/>
 
-    <include layout="@layout/include_divider_line" />
+    <include layout="@layout/include_divider_line"/>
 
 
     <LinearLayout
@@ -128,19 +128,24 @@
             android:paddingTop="4dp"
             android:text="@string/requirement"
             android:textColor="@color/colorContent"
-            android:textSize="@dimen/font4" />
+            android:textSize="@dimen/font4"/>
 
-        <TextView
-            android:id="@+id/tv_requirement"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
-            android:text="后台传递过来的使用要求" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_requirement"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:text="后台传递过来的使用要求"/>
+        </ScrollView>
 
 
     </LinearLayout>
 
-    <include layout="@layout/include_divider_line" />
+    <include layout="@layout/include_divider_line"/>
 
     <TextView
         android:id="@+id/tv_recent"
@@ -150,7 +155,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/recent"
         android:textColor="@color/colorContent"
-        android:textSize="@dimen/font4" />
+        android:textSize="@dimen/font4"/>
 
     <TextView
         android:id="@+id/tv_participate"
@@ -160,7 +165,7 @@
         android:gravity="right"
         android:text="@string/participate"
         android:textColor="@color/colorContent"
-        android:textSize="@dimen/font4" />
+        android:textSize="@dimen/font4"/>
 
     <Button
         android:id="@+id/btn_join"
@@ -168,6 +173,6 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_gravity="bottom"
-        android:text="@string/join_now" />
+        android:text="@string/join_now"/>
 
 </LinearLayout>
