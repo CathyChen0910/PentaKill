@@ -29,6 +29,7 @@ public class EditSendInfoActivity extends AppCompatActivity{
         editAddressDetail = findViewById(R.id.textAddressDetail);
         editName = findViewById(R.id.edit_sender_name);
         editPhone = findViewById(R.id.edit_send_count);
+        editSendCount = findViewById(R.id.edit_send_count);
         editWeight = findViewById(R.id.edit_single_weight);
         btnSign = findViewById(R.id.btn_sign);
     }
