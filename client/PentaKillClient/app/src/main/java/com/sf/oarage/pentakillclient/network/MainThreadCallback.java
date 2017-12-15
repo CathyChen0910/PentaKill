@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 
 /**
@@ -23,10 +25,16 @@ public abstract class MainThreadCallback implements Callback {
 
     @Override
     public void onSuccess(String t) {
-        Message message = Message.obtain();
-        message.what = MainHandler.WHAT_ON_SUCCESS;
-        message.obj = t;
-        mainHandler.sendMessage(message);
+        Gson gson = new Gson();
+        BaseBean baseBean = gson.fromJson(t, BaseBean.class);
+        if (baseBean.isSuccess()) {
+            Message message = Message.obtain();
+            message.what = MainHandler.WHAT_ON_SUCCESS;
+            message.obj = baseBean.getResult();
+            mainHandler.sendMessage(message);
+        } else {
+            onError(new Throwable(baseBean.getMsg()));
+        }
     }
 
     @Override

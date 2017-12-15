@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.sf.oarage.pentakillclient"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -28,4 +28,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.1'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 }

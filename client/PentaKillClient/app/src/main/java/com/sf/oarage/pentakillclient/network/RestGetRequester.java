@@ -7,6 +7,8 @@ import com.sf.oarage.pentakillclient.Constants;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
+import static com.sf.oarage.pentakillclient.Constants.HOST;
+
 /**
  * 普通GET请求
  * Created by spawn on 17-10-24.
@@ -15,7 +17,7 @@ import java.net.HttpURLConnection;
 public class RestGetRequester extends RestRequester {
 
     public RestGetRequester(String url) {
-        super(url);
+        super(HOST + url);
     }
 
     @Override
@@ -32,7 +34,7 @@ public class RestGetRequester extends RestRequester {
     public void onRequest(String requestParams, HttpURLConnection urlConnection) throws IOException {
         urlConnection.setRequestMethod("GET");
         CookieManager cookieManager = CookieManager.getInstance();
-        String cookie = cookieManager.getCookie(Constants.HOST);
+        String cookie = cookieManager.getCookie(HOST);
         urlConnection.setRequestProperty("Cookie", cookie);
         urlConnection.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 " +
                 "(KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36");
