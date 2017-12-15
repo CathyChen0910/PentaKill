@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#FF6532</color>
+    <color name="colorPrimaryDark">#d1532a</color>
+    <color name="colorAccent">#99FF6532</color>
+
+    <color name="colorContent">#353535</color>
+    <color name="colorToastInfo">#D36A48</color>
+    <color name="colorContentBlack">#000000</color>
+    <color name="colorDivider">#E6E6E6</color>
+    <color name="colorBody1">#B2B2B2</color>
+    <color name="colorStatus">#598E1C</color>
+    <color name="colorBody2">#888888</color>
+    <color name="colorTinyButton">#E64340</color>
+    <color name="colorTinyTitle">#D35048</color>
+    <color name="colorBackGround">#F8F8F8</color>
+    <color name="colorWechatShare">#09BB07</color>
+    <color name="colorMainBackGround">#FFFFFF</color>
+    <color name="colorRemindBackGround">#F8EEE6</color>
 </resources>
