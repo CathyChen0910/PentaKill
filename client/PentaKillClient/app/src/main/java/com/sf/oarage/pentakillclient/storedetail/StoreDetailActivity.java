@@ -75,7 +75,6 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
             storeId = uri.getQueryParameter("store_id");
             marketId = uri.getQueryParameter("market_id");
         }
-        loadData();
     }
 
     /**
