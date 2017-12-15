@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="font0">40px</dimen>
-    <dimen name="font1">37px</dimen>
-    <dimen name="font2">36px</dimen>
-    <dimen name="font3">34px</dimen>
-    <dimen name="font4">32px</dimen>
-    <dimen name="font5">30px</dimen>
-    <dimen name="font6">28px</dimen>
-    <dimen name="font7">26px</dimen>
-    <dimen name="font8">24px</dimen>
+    <dimen name="font0">20sp</dimen>
+    <dimen name="font1">18.5sp</dimen>
+    <dimen name="font2">18sp</dimen>
+    <dimen name="font3">17sp</dimen>
+    <dimen name="font4">16sp</dimen>
+    <dimen name="font5">15sp</dimen>
+    <dimen name="font6">14sp</dimen>
+    <dimen name="font7">14sp</dimen>
+    <dimen name="font8">12sp</dimen>
 </resources>
