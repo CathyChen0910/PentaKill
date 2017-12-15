@@ -85,6 +85,8 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         mRequirement = findViewById(R.id.tv_requirement);
         mTvParticipate = findViewById(R.id.tv_participate);
         mBtnJoin = findViewById(R.id.btn_join);
+        StoreDetailContract.StoreDetailPresenter storeDetailPresenter = new StoreDetailPresenterImpl();
+        storeDetailPresenter.start(this);
     }
 
     /**

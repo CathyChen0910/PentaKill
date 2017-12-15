@@ -1,8 +1,6 @@
 package com.sf.oarage.pentakillclient.storedetail;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import com.sf.oarage.pentakillclient.network.MainThreadCallback;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.MarketBean;
 import com.sf.oarage.pentakillclient.storedetail.data.remote.StoreDetailBean;
@@ -49,7 +47,7 @@ public class StoreDetailPresenterImpl implements StoreDetailContract.StoreDetail
 
     @Override
     public void loadMarket(String marketId) {
-        mStoreDetailModel.reqMarket(new MainThreadCallback() {
+        mStoreDetailModel.reqMarket("",new MainThreadCallback() {
             @Override
             public void onMainThreadSuccess(String data) throws JSONException {
                 //处理
