@@ -17,6 +17,28 @@ public class MarketBean {
      * 总限制人数
      */
     private int limitNum;
+    /**
+     * 使用说明
+     */
+    private String userRequire;
+
+    @Override
+    public String toString() {
+        return "MarketBean{" +
+                "minWeight=" + minWeight +
+                ", maxWeight=" + maxWeight +
+                ", limitNum=" + limitNum +
+                ", userRequire='" + userRequire + '\'' +
+                '}';
+    }
+
+    public String getUserRequire() {
+        return userRequire;
+    }
+
+    public void setUserRequire(String userRequire) {
+        this.userRequire = userRequire;
+    }
 
     public double getMinWeight() {
         return minWeight;
@@ -42,12 +64,4 @@ public class MarketBean {
         this.limitNum = limitNum;
     }
 
-    @Override
-    public String toString() {
-        return "MarketBean{" +
-                "minWeight=" + minWeight +
-                ", maxWeight=" + maxWeight +
-                ", limitNum=" + limitNum +
-                '}';
-    }
 }
