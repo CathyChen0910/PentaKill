@@ -65,7 +65,7 @@ public class GroupServiceImpl extends TransactionalService implements IGroupServ
 		group.setPeriodNum(periodNumber);
 		group.setMinBagNum(market.getDailyMinPacks());
 		group.setMinPrice(6D);
-
+		group.setPicture("img/1.png");
 		group.setEndTime(TimeUtil.add(TimeUtil.now(), market.getGroupPeriod()));
 		group.setPromisePeriod(3);
 		group.setCreateTime(TimeUtil.now());
