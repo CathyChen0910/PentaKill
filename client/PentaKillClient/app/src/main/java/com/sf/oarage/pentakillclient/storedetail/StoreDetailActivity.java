@@ -145,11 +145,8 @@ public class StoreDetailActivity extends AppCompatActivity implements StoreDetai
         Intent intent = new Intent();
         intent.setClass(StoreDetailActivity.this, EditSendInfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("period", mStoreDetail.getPeriodNum());
         bundle.putLong("groupId", Long.parseLong(storeId));
-        bundle.putDouble("minWeight", mMarketBean.getMinWeight());
-        bundle.putDouble("maxWeight", mMarketBean.getMaxWeight());
-        bundle.putInt("minBagNum", mStoreDetail.getMinBagNum());
+        bundle.putLong("marketId", Long.parseLong(marketId));
         startActivity(intent);
     }
 

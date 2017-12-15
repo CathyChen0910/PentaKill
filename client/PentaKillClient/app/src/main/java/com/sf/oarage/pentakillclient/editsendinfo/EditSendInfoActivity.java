@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sf.oarage.pentakillclient.R;
+import com.sf.oarage.pentakillclient.qrcode.QrCodeActivity;
 import com.sf.oarage.pentakillclient.utils.StringUtils;
 
 import chihane.jdaddressselector.BottomDialog;
@@ -21,7 +22,6 @@ import chihane.jdaddressselector.model.City;
 import chihane.jdaddressselector.model.County;
 import chihane.jdaddressselector.model.Province;
 import chihane.jdaddressselector.model.Street;
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by liushihan on 2017/12/15.
@@ -36,6 +36,8 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
     EditText editWeight;
     Button btnSign;
     EditSendInfoContract.Presenter mPresenter;
+    private long groupId;
+    private long marketId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,11 +60,8 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         if (extras!=null) {
-            String period = extras.getString("period");
-            double minWeight = extras.getDouble("minWeight");
-            double maxWeight = extras.getDouble("maxWeight");
-            int minBagNum = extras.getInt("minBagNum");
-            long groupId = extras.getLong("groupId");
+            groupId = extras.getLong("groupId");
+            marketId = extras.getLong("marketId");
             mPresenter.setGroupId(groupId);
         }
 
@@ -159,16 +158,6 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
 
     @Override
     public void showWechatDialog() {
-        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("报名成功")
-                .setContentText("转发给更多的朋友或生成图片分享至朋友圈，即可加快集货进度~")
-                .setConfirmText("发送微信好友")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                    }
-                })
-                .show();
 
         new AlertDialog.Builder(this)
                 .setTitle("报名成功")
@@ -180,6 +169,14 @@ public class EditSendInfoActivity extends AppCompatActivity implements EditSendI
                     }
                 })
                 .setNegativeButton("取消", null).show();
+    }
+
+    @Override
+    public void jumpQr() {
+        Intent intent = new Intent(this, QrCodeActivity.class);
+        intent.putExtra("id",groupId);
+        intent.putExtra("market_id",marketId);
+        startActivity(intent);
     }
 
     @Override
